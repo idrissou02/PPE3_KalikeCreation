@@ -10,10 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BougieController extends AbstractController
 {
-    #[Route('/bougie', name: 'app_bougie', methods: 'GET')]
+    #[Route('/bougie', name: 'bougie', methods: 'GET')]
     public function listeBougie(BougieRepository $repo): Response
     {
-        $bougies=$repo->findAll();
+        $bougies=$repo->ListeBougies();
         return $this->render('bougie/listeBougies.html.twig', [
             'LesBougies' => $bougies
         ]);
