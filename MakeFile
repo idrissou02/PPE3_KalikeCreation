@@ -1,5 +1,16 @@
-migration:
+message = ""
+
+
+migr: #Migration automatique
 	php bin/console make:migration
 	php bin/console d:m:m
 	php bin/console doctrine:fixtures:load
 
+addGit: #ça envoie un push tout seul
+	git add --all
+	git commit -m $(MESSAGE)
+	git push
+
+updateGit: #ça actualise ta branche actuel avec le main
+	git fetch origin main
+	git merge origin/main
