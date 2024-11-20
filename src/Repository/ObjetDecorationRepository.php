@@ -26,13 +26,11 @@ class ObjetDecorationRepository extends ServiceEntityRepository
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o')
-            ->leftJoin('art.albums','a')
-            ->orderBy('art.nom', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->createQueryBuilder('o')  
+            ->select('o')  
+            ->orderBy('o.nom', 'ASC')  
+            ->getQuery()  
+            ->getResult(); 
     }
 
 //    public function findOneBySomeField($value): ?ObjetDecoration

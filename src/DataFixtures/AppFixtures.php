@@ -47,7 +47,8 @@ class AppFixtures extends Fixture
             $objetDeco
                 ->setNom($value[1])
                 ->setDescription($value[2])
-                ->setPrix($value[3]);
+                ->setPrix($value[3])
+                ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
             $manager->persist($objetDeco);
         }
         $manager->flush();

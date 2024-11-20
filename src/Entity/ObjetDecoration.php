@@ -22,6 +22,9 @@ class ObjetDecoration
     #[ORM\Column]
     private ?float $prix = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class ObjetDecoration
     public function setPrix(float $prix): static
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

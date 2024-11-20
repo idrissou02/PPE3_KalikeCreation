@@ -15,7 +15,7 @@ class ObjetDecoController extends AbstractController
     public function listeObjetDeco(ObjetDecorationRepository $repo): Response
     {
         $objetDeco=$repo->findAll();
-        return $this->render('bougie/listeObjetdecoration.html.twig', [
+        return $this->render('objetdecoration/listeObjetdecoration.html.twig', [
             'LesObjetsDeco' => $objetDeco
         ]);
     }
