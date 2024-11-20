@@ -6,21 +6,19 @@
 <h1 class="pt-2 text-center">Nos Objets décorations </h1>
 <hr>
 <div class="row pt-2">
-{% for leObjetdeco in lesObjetsdéco%}
-    {% set nbObjetdeco = leObjetdeco.albums|length %}
+{% for leObjetdeco in lesObjetsdéco %}
+    {% set nbObjetdeco = leObjetdeco.description|length %}
     <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
         <div class="card mb-3">
             <h3 class="card-header"> <a href=" {{path('ficheObjetdecoration',{'id': leObjetdeco.id })}} ">  {{leObjetdeco.nom}}</h3>
             <div class="card-body">
             </div>
-            <img class="avatar mx-auto d-block" src="{{leObjetdeco.image}}" alt"">  </img>
+            <img class="avatar mx-auto d-block" src="{{leObjetdeco.description}}" alt"">  </img>
             <div class="card-body">
 
         </div>      
     </div>
 {% endfor %}
-
-
 </div>
 {% endblock %}
  
