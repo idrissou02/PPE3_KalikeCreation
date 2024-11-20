@@ -10,12 +10,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BougieController extends AbstractController
 {
-    #[Route('/bougie', name: 'app_bougie', methods: 'GET')]
+    #[Route('/bougie', name: 'bougie', methods: 'GET')]
     public function listeBougie(BougieRepository $repo): Response
     {
-        $bougies=$repo->findAll();
+        $bougies=$repo->ListeBougies();
         return $this->render('bougie/listeBougies.html.twig', [
             'LesBougies' => $bougies
         ]);
     }
+    #[Route('/bougie/{id}', name: 'ficheBougie', methods: 'GET')]
+    public function FicheBougie(Bougie $bougie)
+    {
+        return $this->render('bougie/FicheBougie.html.twig', [
+            'LaBougies' => $bougie
+        ]);
+    }
+
 }
