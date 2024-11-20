@@ -10,20 +10,11 @@
     {% set nbObjetdeco = leObjetdeco.albums|length %}
     <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
         <div class="card mb-3">
-            <h3 class="card-header"> <a href=" {{path('ficheArtiste',{'id': leObjetdeco.id })}} ">  {{leObjetdeco.nom}}</h3>
+            <h3 class="card-header"> <a href=" {{path('ficheObjetdecoration',{'id': leObjetdeco.id })}} ">  {{leObjetdeco.nom}}</h3>
             <div class="card-body">
-            <h5 class="card-title"> 
-                <a href="" class="badge badge-success"></a> {{ leObjetdeco.albums|length}} {% if nbObjetdeco > 1  %} objetdeco {% else %} objetdeco {% endif %}
-                </h5> 
             </div>
             <img class="avatar mx-auto d-block" src="{{leObjetdeco.image}}" alt"">  </img>
             <div class="card-body">
-                <p class="card-text">{{leObjetdeco.description|slice(0,200)|raw}}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"> {% if leObjetdeco.type == 0 %} Artiste Solo {% else %} Artiste en groupe {% endif %} </li>
-                <li class="list-group-item"> <a href="{{ leObjetdeco.site }}"> son site web </a> </li>
-            </ul>   
 
         </div>      
     </div>

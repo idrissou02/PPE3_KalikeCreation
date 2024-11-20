@@ -21,20 +21,19 @@ class ObjetDecorationRepository extends ServiceEntityRepository
         parent::__construct($registry, ObjetDecoration::class);
     }
 
-//    /**
-//     * @return ObjetDecoration[] Returns an array of ObjetDecoration objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+     * @return ObjetDecoration[] Returns an array of ObjetDecoration objects
+     */
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('o')
+            ->select('o')
+            ->leftJoin('art.albums','a')
+            ->orderBy('art.nom', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?ObjetDecoration
 //    {
