@@ -25,7 +25,8 @@ class AppFixtures extends Fixture
                         ->setCouleur($value[4])     
                         ->setPoid($value[5])
                         ->setDdv($value[6])
-                        ->setTaille($value[7]);
+                        ->setTaille($value[7])
+                        ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
             $manager->persist($bougie);
         }
         $manager->flush(); 

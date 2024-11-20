@@ -18,4 +18,12 @@ class BougieController extends AbstractController
             'LesBougies' => $bougies
         ]);
     }
+    #[Route('/bougie/{id}', name: 'ficheBougie', methods: 'GET')]
+    public function FicheBougie(Bougie $bougie)
+    {
+        return $this->render('bougie/FicheBougie.html.twig', [
+            'LaBougies' => $bougie
+        ]);
+    }
+
 }

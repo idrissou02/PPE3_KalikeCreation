@@ -9,9 +9,9 @@
 {% for LaBougie in LesBougies%}
     <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
         <div class="card mb-3">
-                <h3 class="card-header" href="">   {{LaBougie.nomB}}</h3>
+                <h3 class="card-header"> <a href=" {{path ('ficheBougie',{'id': LaBougie.id })}}">  {{LaBougie.nomB}}</h3>
                 <div class="card-body">
-
+                     <img class="avatar mx-auto d-block" src="{{LaBougie.image}}" alt"">  </img>
                 
                 </div>
 

@@ -27,5 +27,5 @@ final class Version20241113151109 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE bougie DROP image');
-    }
+    } 
 }
