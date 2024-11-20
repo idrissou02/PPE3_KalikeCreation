@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Kaline Création{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
-        <link rel="stylesheet" href="{{asset('CSS/app.css')}}">
+        <link rel="stylesheet" href="{{asset('app.css')}}">
         <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -26,7 +26,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des bougies</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href=" ">Liste Bougies</a>
+                  <a class="dropdown-item" href=" {{path('bougie') }}">Liste Bougies</a>
                 </div>
                  <div class="dropdown-menu">
                   <a class="dropdown-item" href=" ">Bougie Gourmande</a>
@@ -67,9 +67,6 @@
         {% endfor %}
           {% block body %}{% endblock %}
         </div>
-
-
-
         {% block javascripts %}
            
         {% endblock %}
@@ -82,15 +79,16 @@
 
   <footer class="text-center text-lg-start" style="background-color: pink;">
     <div class="container d-flex justify-content-center py-5">
+      <a href="https://www.instagram.com/kaline_creation78/">
       <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0 ;">
-        <i class="fab fa-facebook-f"></i>
-      </button>
-      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
-        <i class="fab fa-tiktok"></i>
-      </button>
-      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
         <i class="fab fa-instagram"></i>
       </button>
+      </a>
+      <a href="https://www.tiktok.com/@kalinecreation78?lang=fr">
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
+          <i class="fab fa-tiktok"></i>
+        </button>
+      </a>
     </div>
 
     <!-- Copyright -->
