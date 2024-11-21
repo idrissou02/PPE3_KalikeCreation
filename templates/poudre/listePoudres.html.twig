@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listes des poudres{% endblock %}
+{% block title %}Listes des poudres parfumée{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Nos poudres </h1>
+<h1 class="pt-2 text-center">Nos poudres parfumée</h1>
 <hr>
 <div class="row pt-2">
     {% for LaBougie in LesPoudres%}
         <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
             <div class="card mb-3">
-                    <h3 class="card-header"> <a href="{{path ('fichePoudre',{'id': LaPoudre.id})}}">  {{LaBougie.nomB}} </a></h3>
+                    <h3 class="card-header"> <a href="{{path ('fichePoudre',{'id': LaPoudre.id})}}">  {{LaPoudre.nomB}} </a></h3>
                     <div class="card-body">
                         <h5 class="card-title"> 
                             <img class="avatar mx-auto d-block" src="{{LaBougie.image}}" alt"">  </img>
                         </h5> 
-                        <p class="card-text prix"> {{LaBougie.prix}} €</p> 
+                        <p class="card-text prix"> {{LaPoudre.prix}} €</p> 
                     </div>
 
             </div>      
