@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PoudreController extends AbstractController
 {
-    #[Route('/bougie', name: 'bougie', methods: 'GET')]
+    #[Route('/poudre', name: 'poudre', methods: 'GET')]
     public function listePoudre(PoudreRepository $repo): Response
     {
         $poudres=$repo->ListePoudres();
