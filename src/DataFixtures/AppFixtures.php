@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-
+        
         $this->loadBougies($manager);
 
         $this->loadObjetsDecoration($manager);

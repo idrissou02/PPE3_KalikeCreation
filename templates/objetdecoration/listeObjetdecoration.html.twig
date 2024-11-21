@@ -1,24 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listes des Objets décorations{% endblock %}
+{% block title %}Liste des Objets Décoratifs{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Nos Objets décorations </h1>
-<hr>
-<div class="row pt-2">
-{% for leObjetdeco in lesObjetsdéco %}
-    {% set nbObjetdeco = leObjetdeco.description|length %}
-    <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
-        <div class="card mb-3">
-            <h3 class="card-header"> <a href=" {{path('ficheObjetdecoration',{'id': leObjetdeco.id })}} ">  {{leObjetdeco.nom}}</h3>
-            <div class="card-body">
-            </div>
-            <img class="avatar mx-auto d-block" src="{{leObjetdeco.description}}" alt"">  </img>
-            <div class="card-body">
+  <div class="container">
+    <h1 class="text-center mb-5">Liste des Objets Décoratifs</h1>
 
-        </div>      
-    </div>
-{% endfor %}
-</div>
+    {% if LesObjetsDeco is not empty %}
+      <div class="row">
+        {% for objet in LesObjetsDeco %}
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="{{ objet.image }}" class="card-img-top" alt="Image de {{ objet.nom }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ objet.nom }}</h5>
+                <p class="card-text">{{ objet.description }}</p>
+                <p class="card-text"><strong>Prix :</strong> {{ objet.prix }} €</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>Aucun objet décoratif trouvé.</p>
+    {% endif %}
+  </div>
 {% endblock %}
- 
+
+{% block stylesheets %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ1mR7gXQm7g66j6kR3J1ji7b+HkBqAqPTr9W1o8Dk5h7YdBxF1EbwFcbjop" crossorigin="anonymous">
+  <style>
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    .card-body {
+      text-align: center;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .text-center {
+      text-align: center;
+    }
+  </style>
+{% endblock %}
