@@ -42,12 +42,15 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ path('app_objetdecoration') }}" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ">Objet Décoratifs</a>
-                                <div class="dropdown-divider"></div>
-                            </div>
-                        </li>
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ path('app_objetdecoration') }}" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="{{ path('app_objetdecoration') }}">Liste des objets décoratifs</a>
+        <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path('app_fiche_objetdecoration', {'id': objet.id}) }}">{{ objet.nom }}</a>
+        {% endfor %}
+    </div>
+</li>
+
                     </ul>  
                 </div>
             </div>
