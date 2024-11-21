@@ -1,14 +1,27 @@
-message = ""
+oui: #Migration automatique
+	$(MAKE) mm
+	$(MAKE) dmm
+	$(MAKE) load
+.PHONY: oui
+	
+mm:
+	php bin/console make:migration --no-interaction
+.PHONY: mm
 
+dmm:
+	php bin/console d:m:m --no-interaction
+.PHONY: dmm
 
-migr: #Migration automatique
-	php bin/console make:migration
-	php bin/console d:m:m
+load:
 	php bin/console doctrine:fixtures:load
+.PHONY: load
+
+
+
 
 addGit: #ça envoie un push tout seul
 	git add --all
-	git commit -m $(MESSAGE)
+	git commit -m ""
 	git push
 
 updateGit: #ça actualise ta branche actuel avec le main
