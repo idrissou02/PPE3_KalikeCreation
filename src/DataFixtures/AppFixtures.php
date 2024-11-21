@@ -18,6 +18,10 @@ class AppFixtures extends Fixture
         $this->loadObjetsDecoration($manager);
     }
 
+    private function loadBougies(ObjectManager $manager): void
+    {
+        $lesBougies = $this->chargefichier("Bougie.csv");
+
         foreach ($lesBougies as $value)
         {
             $bougie=new Bougie();
@@ -28,12 +32,14 @@ class AppFixtures extends Fixture
                         ->setCouleur($value[4])     
                         ->setPoid($value[5])
                         ->setDdv($value[6])
-                        ->setTaille($value[7]);
-            $manager->persist($bougie);
+                        ->setTaille($value[7])
+                        ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
+                        $manager->persist($bougie);
         }
-
-        $manager->flush();
+            $manager->flush();
     }
+
+    
 
     private function loadObjetsDecoration(ObjectManager $manager): void
     {
