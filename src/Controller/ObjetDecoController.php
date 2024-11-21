@@ -19,16 +19,5 @@ class ObjetDecoController extends AbstractController
         ]);
     }
 
-    #[Route('/objetdecoration/{id}', name: 'app_fiche_objetdecoration', methods: 'GET')]
-    public function ficheObjetDeco(int $id, ObjetDecorationRepository $repo): Response
-    {
-     
-        $objetDeco = $repo->find($id);
-        if (!$objetDeco) {
-            throw $this->createNotFoundException('Objet décoratif non trouvé');
-        }
-        return $this->render('objetdecoration/ficheObjetdecoration.html.twig', [
-            'objet' => $objetDeco
-        ]);
-    }
+   
 }
