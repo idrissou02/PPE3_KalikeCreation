@@ -24,12 +24,11 @@ class BougieRepository extends ServiceEntityRepository
     /**
     * @return Bougie[] Returns an array of Bougie objects
     */
-    public function findAll(): array
+    public function ListeBougies(): array
     {
         return $this->createQueryBuilder('b')
         ->select('b')
-        ->leftjoin('art.albums','a')
-        ->orderBy('art.nom', 'ASC')
+        ->orderBy('b.NomB', 'ASC')
         ->getQuery()
         ->getResult()
     ;}

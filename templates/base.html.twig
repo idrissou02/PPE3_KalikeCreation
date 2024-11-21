@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Kaline Création{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('CSS/app.css') }}">
+        <link rel="stylesheet" href="{{asset('CSS/app.css')}}">
         <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -12,50 +12,47 @@
         {% endblock %}  
     </head>
     <body> 
-        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">Kaline Creation</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor04">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des bougies</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ">Liste Bougies</a>
-                            </div>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ">Bougie Gourmande</a>
-                            </div>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ">Bougie Fondante</a>
-                            </div>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ">Bougie Moulée</a>
-                            </div>
-                        </li>  
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des fondants</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ">Fondant</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ path('app_objetdecoration') }}" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="{{ path('app_objetdecoration') }}">Liste des objets décoratifs</a>
-        <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ path('app_fiche_objetdecoration', {'id': objet.id}) }}">{{ objet.nom }}</a>
-        {% endfor %}
-    </div>
-</li>
-
-                    </ul>  
+    
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Kaline Creation</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor04">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des bougies</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Liste Bougies</a>
                 </div>
-            </div>
-        </nav>
-        
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Bougie Gourmande</a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Bougie Fondante</a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Bougie Moulée</a>
+                </div>
+              </li>  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des fondants</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Fondant</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Objet Décoratifs</a>
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+            </ul>  
+          </div>
+      </div>
+  </nav>
         <div class="container">
             {# Affiche tous les messages flash #}
             {% for label, messages in app.flashes %}
@@ -68,25 +65,29 @@
             {% block body %}{% endblock %}
         </div>
 
+
+
         {% block javascripts %}
         {% endblock %}
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
 
-        <div class="container my-5">
-            <footer class="text-center text-lg-start" style="background-color: pink;">
-                <div class="container d-flex justify-content-center py-5">
-                    <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
-                        <i class="fab fa-tiktok"></i>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
-                        <i class="fab fa-instagram"></i>
-                    </button>
-                </div>
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container my-5">
+
+  <footer class="text-center text-lg-start" style="background-color: pink;">
+    <div class="container d-flex justify-content-center py-5">
+      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0 ;">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
+        <i class="fab fa-tiktok"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
+        <i class="fab fa-instagram"></i>
+      </button>
+    </div>
 
                 <!-- Copyright -->
                 <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">

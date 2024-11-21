@@ -18,20 +18,17 @@ class AppFixtures extends Fixture
         $this->loadObjetsDecoration($manager);
     }
 
-    private function loadBougies(ObjectManager $manager): void
-    {
-        $lesBougies = $this->chargefichier("Bougie.csv");
-
-        foreach ($lesBougies as $value) {
-            $bougie = new Bougie();
-            $bougie
-                ->setNomB($value[1])
-                ->setMateriaux($value[2])
-                ->setPrix($value[3])
-                ->setCouleur($value[4])
-                ->setPoid($value[5])
-                ->setDdv($value[6])
-                ->setTaille($value[7]);
+        foreach ($lesBougies as $value)
+        {
+            $bougie=new Bougie();
+            $bougie    
+                        ->setNomB($value[1])
+                        ->setMateriaux($value[2])
+                        ->setPrix($value[3])
+                        ->setCouleur($value[4])     
+                        ->setPoid($value[5])
+                        ->setDdv($value[6])
+                        ->setTaille($value[7]);
             $manager->persist($bougie);
         }
 
