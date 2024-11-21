@@ -39,8 +39,6 @@ class AppFixtures extends Fixture
             $manager->flush();
     }
 
-    
-
     private function loadObjetsDecoration(ObjectManager $manager): void
     {
         $lesObjetsDeco = $this->chargefichier("ObjetsDecoration.csv");
@@ -56,6 +54,8 @@ class AppFixtures extends Fixture
         }
         $manager->flush();
     }
+
+    
 
     public function chargefichier($fichier)
     {
