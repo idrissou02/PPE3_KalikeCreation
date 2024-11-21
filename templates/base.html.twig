@@ -4,14 +4,12 @@
         <meta charset="UTF-8">
         <title>{% block title %}Kaline Création{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
-        <link rel="stylesheet" href="{{asset('app.css')}}">
+        <link rel="stylesheet" href="{{asset('CSS/app.css')}}">
         <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}  
-
-        
     </head>
     <body> 
     
@@ -26,7 +24,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des bougies</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href=" {{path('bougie') }}">Liste Bougies</a>
+                  <a class="dropdown-item" href="{{path('bougie')}}">Liste Bougies</a>
                 </div>
                  <div class="dropdown-menu">
                   <a class="dropdown-item" href=" ">Bougie Gourmande</a>
@@ -73,52 +71,49 @@
       </div>
   </nav>
         <div class="container">
-
-        {# affiche tout les messages flash #}
-        {% for label,messages in app.flashes %}
-          <div class="alert alert-{{label}} mt-3">
-            {% for message in messages %}
-              <p> {{message}} </p>
+            {# Affiche tous les messages flash #}
+            {% for label, messages in app.flashes %}
+                <div class="alert alert-{{ label }} mt-3">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
             {% endfor %}
-          </div>
-        {% endfor %}
-          {% block body %}{% endblock %}
+            {% block body %}{% endblock %}
         </div>
+
+
+
         {% block javascripts %}
-           
         {% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
 
 <!-- Remove the container if you want to extend the Footer to full width. -->
 <div class="container my-5">
 
   <footer class="text-center text-lg-start" style="background-color: pink;">
     <div class="container d-flex justify-content-center py-5">
-      <a href="https://www.instagram.com/kaline_creation78/">
       <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0 ;">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
+        <i class="fab fa-tiktok"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
         <i class="fab fa-instagram"></i>
       </button>
-      </a>
-      <a href="https://www.tiktok.com/@kalinecreation78?lang=fr">
-        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
-          <i class="fab fa-tiktok"></i>
-        </button>
-      </a>
     </div>
 
-    <!-- Copyright -->
-    <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://www.kalinecreation.com/boutique/">oui</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  
-</div>
-<!-- End of .container -->
-
-
-</body>  
+                <!-- Copyright -->
+                <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2020 Copyright:
+                    <a class="text-white" href="https://www.kalinecreation.com/boutique/">oui</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+        <!-- End of .container -->
+    </body>  
 </html>

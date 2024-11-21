@@ -1,5 +1,29 @@
-migration:
-	php bin/console make:migration
-	php bin/console d:m:m
-	php bin/console doctrine:fixtures:load
+oui: #Migration automatique
+	$(MAKE) mm
+	$(MAKE) dmm
+	$(MAKE) load
+.PHONY: oui
+	
+mm:
+	php bin/console make:migration --no-interaction
+.PHONY: mm
 
+dmm:
+	php bin/console d:m:m --no-interaction
+.PHONY: dmm
+
+load:
+	php bin/console doctrine:fixtures:load
+.PHONY: load
+
+
+
+
+addGit: #ça envoie un push tout seul
+	git add --all
+	git commit -m ""
+	git push
+
+updateGit: #ça actualise ta branche actuel avec le main
+	git fetch origin main
+	git merge origin/main
