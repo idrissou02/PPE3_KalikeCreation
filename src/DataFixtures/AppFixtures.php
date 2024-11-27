@@ -39,8 +39,6 @@ class AppFixtures extends Fixture
             $manager->flush();
     }
 
-    
-
     private function loadObjetsDecoration(ObjectManager $manager): void
     {
         $lesObjetsDeco = $this->chargefichier("ObjetsDecoration.csv");
@@ -55,6 +53,26 @@ class AppFixtures extends Fixture
             $manager->persist($objetDeco);
         }
         $manager->flush();
+    }
+
+    private function loadPoudre(ObjectManager $manager): void
+    {
+        $lesPoudres = $this->chargefichier("Poudre.csv");
+
+        foreach ($lesPoudres as $value)
+        {
+            $poudre=new Bougie();
+            $poudre    
+                        ->setNom($value[1])
+                        ->setMateriaux($value[2])
+                        ->setPrix($value[3])
+                        ->setCouleur($value[4])     
+                        ->setPoid($value[5])
+                        ->setDdv($value[6])
+                        ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
+                        $manager->persist($bougie);
+        }
+            $manager->flush();
     }
 
     public function chargefichier($fichier)
