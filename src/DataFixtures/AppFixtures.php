@@ -75,6 +75,26 @@ class AppFixtures extends Fixture
             $manager->flush();
     }
 
+    private function loadDiffuseurVoiture(ObjectManager $manager): void
+    {
+        $LesDiffuseursVoiture = $this->chargefichier("DiffuseurVoiture.csv");
+
+        foreach ($LesDiffuseursVoiture as $value)
+        {
+            $DiffuseurVoiture=new Bougie();
+            $diffuseur    
+                        ->setNom($value[1])
+                        ->setMateriaux($value[2])
+                        ->setPrix($value[3])
+                        ->setCouleur($value[4])     
+                        ->setPoid($value[5])
+                        ->setDdv($value[6])
+                        ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
+                        $manager->persist($diffuseur);
+        }
+            $manager->flush();
+    }
+
     public function chargefichier($fichier)
     {
         $fichierCsv = fopen(__DIR__ . "/" . $fichier, "r");
