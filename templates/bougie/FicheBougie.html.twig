@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des bougie{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Fiche de la bougie </h1>
+<hr>
+<div class="row pt-2">
+        <div class="card mb-3">
+            <h3 class="card-header">{{LaBougie.nomB}}</h3>
+            <div class="row">
+                <div class="col-3 d-flex align-items-center mx-auto">
+                    <img class="avatar mx-auto d-block" src="{{LaBougie.image}}" alt"">  </img> 
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title"> 
+                            <p href="" class="badge badge-success"> {{LaBougie.materiaux}} </p> 
+                        </h5> 
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text prix"> {{LaBougie.prix}} €</p>  </li>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>      
+</div>  
+<table class="table table-hover mx-auto">
+        
+
+      
+    </tbody>
+</table>
+{% endblock %}
+
+ 
