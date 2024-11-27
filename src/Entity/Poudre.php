@@ -29,8 +29,8 @@ class Poudre
     #[ORM\Column]
     private ?float $poids = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $duréeDeVie = null;
+    #[ORM\Column]
+    private ?int $duréeDeVie = null;
 
     #[ORM\Column]
     private ?float $taille = null;
@@ -103,12 +103,12 @@ class Poudre
         return $this;
     }
 
-    public function getDuréeDeVie(): ?\DateTimeInterface
+    public function getDuréeDeVie(): ?int
     {
         return $this->duréeDeVie;
     }
 
-    public function setDuréeDeVie(\DateTimeInterface $duréeDeVie): static
+    public function setDuréeDeVie($duréeDeVie): static
     {
         $this->duréeDeVie = $duréeDeVie;
 
