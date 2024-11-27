@@ -2,22 +2,31 @@
 
 namespace App\Controller;
 
-use App\Repository\ObjetDecorationRepository;
+use App\Entity\ObjetDeco;
+use App\Repository\ObjetDecorationRepository; 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ObjetDecoController extends AbstractController
 {
-  
-    #[Route('/objetdecoration', name: 'app_objetdecoration', methods: 'GET')]
-    public function listeObjetDeco(ObjetDecorationRepository $repo): Response
+    #[Route('/objetdecoration/liste', name: 'app_liste_objetdecoration', methods: ['GET'])]
+    public function liste(ObjetDecorationRepository $repo): Response
     {
-        $objetDeco = $repo->findAll();
+        $lesObjetsDeco = $repo->findAll();
         return $this->render('objetdecoration/listeObjetdecoration.html.twig', [
-            'LesObjetsDeco' => $objetDeco
+            'LesObjetsDeco' => $lesObjetsDeco,
         ]);
     }
-
-   
+    #[Route('/objetdecoration/{id}', name: 'app_fiche_objetdecoration', methods: ['GET'])]
+    public function fiche(int $id, ObjetDecorationRepository $repo): Response
+    {
+        $objetDeco = $repo->find($id);
+        if (!$objetDeco) {
+            throw $this->createNotFoundException('L\'objet décoratif n\'a pas été trouvé.');
+        }
+        return $this->render('objetdecoration/ficheObjetdecoration.html.twig', [
+            'objetDeco' => $objetDeco,
+        ]);
+    }
 }
