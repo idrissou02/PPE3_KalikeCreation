@@ -18,7 +18,7 @@ class PoudreController extends AbstractController
             'LesPoudres' => $poudres
         ]);
     }
-    #[Route('/poudre/{id}', name: 'fichePoudre', methods: 'GET')]
+    #[Route('/poudre/{id}', name: 'FichePoudre', methods: 'GET')]
     public function FichePoudre(Poudre $poudre)
     {
         return $this->render('poudre/FichePoudre.html.twig', [

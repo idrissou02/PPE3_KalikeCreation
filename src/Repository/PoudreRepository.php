@@ -24,12 +24,13 @@ class PoudreRepository extends ServiceEntityRepository
    /**
     * @return Poudre[] Returns an array of Poudre objects
     */
-   public function listePoudre(): array
+   public function listePoudres(): array
    {
-       return $this->createQueryBuilder('p')
-            ->select('p')
-            ->orderBy('p.id', 'ASC')
+       return $this->createQueryBuilder('pou')
+            ->select('pou')
+            ->orderBy('pou.id', 'ASC')
             ->getQuery()
+            ->getResult()
        ;
    }
 

@@ -9,7 +9,7 @@
     {% for LaPoudre in LesPoudres%}
         <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
             <div class="card mb-3">
-                    <h3 class="card-header"> <a href="{{path ('fichePoudre',{'id': LaPoudre.id})}}">  {{LaPoudre.nomB}} </a></h3>
+                    <h3 class="card-header"> <a href="{{path('FichePoudre',{'id': LaPoudre.id})}}">  {{LaPoudre.nom}} </a></h3>
                     <div class="card-body">
                         <h5 class="card-title"> 
                             <img class="avatar mx-auto d-block" src="{{LaPoudre.image}}" alt"">  </img>
