@@ -16,6 +16,7 @@
                 <h5 class="card-title">{{ objet.nom }}</h5>
                 <p class="card-text">{{ objet.description }}</p>
                 <p class="card-text"><strong>Prix :</strong> {{ objet.prix }} €</p>
+                <a class="dropdown-item" href=" {{ path('app_fiche_objetdecoration', {'id': objet.id })}}">Fiche Objet Décoratifs</a>
               </div>
             </div>
           </div>

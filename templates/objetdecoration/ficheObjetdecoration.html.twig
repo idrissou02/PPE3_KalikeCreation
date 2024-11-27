@@ -4,20 +4,20 @@
 
 {% block body %}
   <div class="container">
-    <h1 class="text-center mb-5">{{ objet.nom }}</h1>
+    <h1 class="text-center mb-5">{{ objetDeco.nom }}</h1>
 
     <div class="row">
       <div class="col-md-6 mb-4">
-        <img src="{{ objet.image }}" class="img-fluid rounded" alt="Image de {{ objet.nom }}">
+        <img src="{{ objetDeco.image }}" class="img-fluid rounded" alt="Image de {{ objetDeco.nom }}">
       </div>
       <div class="col-md-6 mb-4">
         <h3>Description</h3>
-        <p>{{ objet.description }}</p>
+        <p>{{ objetDeco.description }}</p>
 
-        <h4>Prix : {{ objet.prix }} €</h4>
+        <h4>Prix : {{ objetDeco.prix }} €</h4>
 
         <div class="mt-4">
-          <a href="{{ path('list_objets_deco') }}" class="btn btn-secondary">Retour à la liste</a>
+          <a href="{{ path('app_liste_objetdecoration') }}" class="btn btn-secondary">Retour à la liste</a>
         </div>
       </div>
     </div>
