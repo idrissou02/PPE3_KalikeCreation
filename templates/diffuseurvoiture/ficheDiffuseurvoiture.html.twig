@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du Diffuseur de Voiture{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <h1 class="text-center mb-5">{{ diffuseurVoiture.nom }}</h1>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <img src="{{ diffuseurVoiture.image }}" class="img-fluid rounded" alt="Image de {{ diffuseurVoiture.nom }}">
+      </div>
+      <div class="col-md-6 mb-4">
+        <h3>Description</h3>
+        <p>{{ diffuseurVoiture.description }}</p>
+
+        <h4>Prix : {{ diffuseurVoiture.prix }} €</h4>
+        <p><strong>Matériaux :</strong> {{ diffuseurVoiture.materiaux }}</p>
+        <p><strong>Couleur :</strong> {{ diffuseurVoiture.couleur }}</p>
+        <p><strong>Poids :</strong> {{ diffuseurVoiture.poids }} kg</p>
+        <p><strong>Durée de vie :</strong> {{ diffuseurVoiture.duréeDeVie|date('d-m-Y') }}</p>
+        <p><strong>Taille :</strong> {{ diffuseurVoiture.taille }} cm</p>
+
+        <div class="mt-4">
+          <a href="{{ path('app_liste_diffuseurvoiture') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block stylesheets %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ1mR7gXQm7g66j6kR3J1ji7b+HkBqAqPTr9W1o8Dk5h7YdBxF1EbwFcbjop" crossorigin="anonymous">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+    .img-fluid {
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .btn-secondary {
+      margin-top: 20px;
+    }
+    .text-center {
+      text-align: center;
+    }
+  </style>
+{% endblock %}
