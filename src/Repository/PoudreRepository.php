@@ -24,15 +24,12 @@ class PoudreRepository extends ServiceEntityRepository
    /**
     * @return Poudre[] Returns an array of Poudre objects
     */
-   public function findByExampleField($value): array
+   public function listePoudre(): array
    {
        return $this->createQueryBuilder('p')
-           ->andWhere('p.exampleField = :val')
-           ->setParameter('val', $value)
-           ->orderBy('p.id', 'ASC')
-           ->setMaxResults(10)
-           ->getQuery()
-           ->getResult()
+            ->select('p')
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
        ;
    }
 

@@ -13,7 +13,7 @@ class PoudreController extends AbstractController
     #[Route('/poudre', name: 'poudre', methods: 'GET')]
     public function listePoudre(PoudreRepository $repo): Response
     {
-        $poudres=$repo->ListePoudres();
+        $poudres=$repo->listePoudres();
         return $this->render('poudre/listePoudres.html.twig', [
             'LesPoudres' => $poudres
         ]);
