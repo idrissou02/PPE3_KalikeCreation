@@ -108,7 +108,7 @@ class Poudre
         return $this->duréeDeVie;
     }
 
-    public function setDuréeDeVie($duréeDeVie): static
+    public function setDuréeDeVie(int $duréeDeVie): static
     {
         $this->duréeDeVie = $duréeDeVie;
 
