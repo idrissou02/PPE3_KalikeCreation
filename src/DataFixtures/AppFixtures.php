@@ -19,6 +19,8 @@ class AppFixtures extends Fixture
         $this->loadPoudre($manager);
 
         $this->loadObjetsDecoration($manager);
+
+        $this->loadPoudre($manager);
     }
 
     private function loadBougies(ObjectManager $manager): void
