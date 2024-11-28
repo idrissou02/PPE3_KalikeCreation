@@ -1,3 +1,12 @@
 .prix {
     font-size: 30px;
 } 
+
+.connexion {
+    background-color: aquamarine;
+}
+
+.connexion:hover {
+    background-color: blueviolet;
+}
+
