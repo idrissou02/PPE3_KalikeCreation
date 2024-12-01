@@ -3,15 +3,22 @@
 {% block title %}Liste des Poudres Parmées{% endblock %}
 
 {% block body %}
+<h1 class="pt-2 text-center">Fiche de la Poudre </h1>
   <div class="container">
-    <h1 class="text-center mb-5">{{ LaPoudre.nom }}</h1>
+    <h3 class="card-header">{{LaPoudre.nom}}</h3>
 
     <div class="row">
       <div class="col-md-6 mb-4">
         <img src="{{ LaPoudre.image }}" class="img-fluid rounded" alt="Image de {{ LaPoudre.nom }}">
       </div>
       <div class="col-md-6 mb-4">
-        <h4>Prix : {{ LaPoudre.prix }} €</h4>
+      <h4>Prix : {{ LaPoudre.prix }} €</h4>
+      <h3>Description</h3>
+        <p>Dans la gamme SAVON DU SUD, voici la poudre parfumée odeur agréable de savon doux, elle est idéale pour votre ménage. 
+        Vous pouvez l'utiliser en saupoudrage sur vos tapis et passer l'aspirateur, il dégagera une bonne odeur dans toute votre maison.
+        Vous pouvez également la mettre dans le fond de votre poubelle, dans le récipient de votre balayette des toilettes.
+        Il peut aussi être utilisé dans votre bac adoucissant de la machine à laver le linge</p>
+        
         
         <div class="mt-4">
           {# <a href="{{ path('listePoudres') }}" class="btn btn-secondary">Retour à la liste</a> #}
@@ -19,8 +26,11 @@
       </div>
     </div>
   </div>
+  
 {% endblock %}
 
 {% block stylesheets %}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ1mR7gXQm7g66j6kR3J1ji7b+HkBqAqPTr9W1o8Dk5h7YdBxF1EbwFcbjop" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-KyZXEJ1mR7gXQm7g66j6kR3J1ji7b+HkBqAqPTr9W1o8Dk5h7YdBxF1EbwFcbjop" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('public/image/app.css') }}">
 {% endblock %}
