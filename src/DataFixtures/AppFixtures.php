@@ -20,7 +20,6 @@ class AppFixtures extends Fixture
 
         $this->loadObjetsDecoration($manager);
 
-        $this->loadPoudre($manager);
     }
 
     private function loadBougies(ObjectManager $manager): void
@@ -70,11 +69,12 @@ class AppFixtures extends Fixture
             $poudre    
                         ->setNom($value[1])
                         ->setMateriaux($value[2])
-                        ->setPrix($value[3])
+                        ->setPrix(3.3)
                         ->setCouleur($value[4])     
-                        ->setPoids(3.4)
+                        ->setPoids(5.5)
                         ->setDuréeDeVie($value[6])
-                        ->setTaille($value[6])
+                        ->setTaille($value[7.7])
+                        ->setDescription($value[8])
                         ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
                         $manager->persist($poudre);
         }
