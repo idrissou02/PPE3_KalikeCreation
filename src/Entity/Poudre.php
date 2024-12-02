@@ -38,6 +38,9 @@ class Poudre
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\Column(length: (255))]
+    private ?string $description = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,5 +145,12 @@ class Poudre
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
