@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PoudreController!{% endblock %}
+{% block title %}Gestion Poudre Parmuée{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1 class="pt-2 text-center">Nos poudres parfumée</h1>
+<hr>
+<div class="row pt-2">
+    {% for LaPoudre in LesPoudres%}
+        <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
+            <div class="card mb-3">
+                    <h3 class="card-header"> <a href="{{path('FichePoudre',{'id': LaPoudre.id})}}">  {{LaPoudre.nom}} </a></h3>
+                    <div class="card-body">
+                        <h5 class="card-title"> 
+                            <img class="avatar mx-auto d-block" src="{{LaPoudre.image}}" alt"">  </img>
+                        </h5> 
+                        <p class="card-text prix"> {{LaPoudre.prix}} €</p> 
+                    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            </div>      
+        </div>
+    {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/KalineCreation/src/Controller/Admin/PoudreController.php'|file_link(0) }}">src/Controller/Admin/PoudreController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/KalineCreation/templates/admin/poudre/index.html.twig'|file_link(0) }}">templates/admin/poudre/index.html.twig</a></code></li>
-    </ul>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
