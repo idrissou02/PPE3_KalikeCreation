@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Poudre;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Poudre>
@@ -33,6 +34,19 @@ class PoudreRepository extends ServiceEntityRepository
             ->getResult()
        ;
    }
+
+   /**
+    * @return Query[] Returns an array of Poudre objects
+    */
+    public function listePoudresCompletePaginee(): Query
+    {
+        return $this->createQueryBuilder('pou')
+             ->select('pou')
+             ->orderBy('pou.id', 'ASC')
+             ->getQuery()
+             ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Poudre
 //    {
