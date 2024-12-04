@@ -1,3 +1,17 @@
 .prix {
     font-size: 30px;
 } 
+
+.connexion {
+    background-color: aquamarine;
+}
+
+.connexion:hover {
+    background-color: blueviolet;
+}
+
+
+/* le css de FichePoudre.html.twig */
+.col-md-6.mb-4 {
+    margin-right: 10px; 
+}

@@ -29,14 +29,17 @@ class Poudre
     #[ORM\Column]
     private ?float $poids = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $duréeDeVie = null;
+    #[ORM\Column]
+    private ?int $duréeDeVie = null;
 
     #[ORM\Column]
     private ?float $taille = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\Column(length: (255))]
+    private ?string $description = null;
 
     public function getId(): ?int
     {
@@ -103,12 +106,12 @@ class Poudre
         return $this;
     }
 
-    public function getDuréeDeVie(): ?\DateTimeInterface
+    public function getDuréeDeVie(): ?int
     {
         return $this->duréeDeVie;
     }
 
-    public function setDuréeDeVie(\DateTimeInterface $duréeDeVie): static
+    public function setDuréeDeVie(int $duréeDeVie): static
     {
         $this->duréeDeVie = $duréeDeVie;
 
@@ -135,6 +138,18 @@ class Poudre
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
