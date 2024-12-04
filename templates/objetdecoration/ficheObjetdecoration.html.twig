@@ -18,6 +18,14 @@
 
         <div class="mt-4">
           <a href="{{ path('app_liste_objetdecoration') }}" class="btn btn-secondary">Retour à la liste</a>
+
+          {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_objetdecoration_modifier', {'id': objetDeco.id}) }}" class="btn btn-warning mt-3">Modifier</a>
+
+            <form action="{{ path('admin_objetdecoration_supprimer', {'id': objetDeco.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet objet décoratif ?');" class="d-inline">
+              <button type="submit" class="btn btn-danger mt-3">Supprimer</button>
+            </form>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -34,7 +42,7 @@
       max-height: 400px;
       object-fit: cover;
     }
-    .btn-secondary {
+    .btn-secondary, .btn-warning, .btn-danger {
       margin-top: 20px;
     }
     .text-center {
@@ -42,3 +50,4 @@
     }
   </style>
 {% endblock %}
+
