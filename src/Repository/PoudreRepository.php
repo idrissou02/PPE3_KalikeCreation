@@ -38,7 +38,7 @@ class PoudreRepository extends ServiceEntityRepository
    /**
     * @return Query[] Returns an array of Poudre objects
     */
-    public function listePoudresCompletePaginee(): Query
+    public function listePoudresComplete(): Query
     {
         return $this->createQueryBuilder('pou')
              ->select('pou')
