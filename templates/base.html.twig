@@ -40,7 +40,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objets décoratifs</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('app_liste_objetdecoration') }}">Liste des Objets Décoratifs</a>
+                                <a class="dropdown-item" href="{{ path('app_objetdecoration') }}">Liste des Objets Décoratifs</a>
                             </div>
                         </li>
 
@@ -64,9 +64,45 @@
                         {% endif %}
                     </ul>
                 </div>
-            </div>
-        </nav>
-
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Bougie Gourmande</a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Bougie Fondante</a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Bougie Moulée</a>
+                </div>
+              </li>  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des fondants</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">Fondant</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{path('app_objetdecoration')}}">Objet Décoratifs</a>
+                </div>  
+              </li>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href=""></a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">     </a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">     </a>
+                </div>
+              </li>    
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+            </ul>  
+          </div>
+      </div>
+  </nav>
         <div class="container">
             {% for label, messages in app.flashes %}
                 <div class="alert alert-{{ label }} mt-3">
