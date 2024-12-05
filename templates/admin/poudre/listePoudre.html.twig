@@ -9,24 +9,29 @@
   <thead>
     <tr>
       <th scope="col"></th>
-      <th scope="col">Nom</th>
-      <th scope="col">Detail</th>
-      <th scope="col">Actions</th>
+      <th scope="col"><u>Nom</u></th>
+      <th scope="col"><u>Detail</u></th>
+      <th scope="col"><u>Actions</u></th>
     </tr>
   </thead>
   <tbody>
       {% for LaPoudre in lesPoudres %}
         {# {% set variable_name = expression %} #}
         <tr>
-        <td class="col-2"><img class="avatar mx-auto d-block" src="{{LaPoudre.image}}" alt""></img></td>
+        <td class="col-2"><img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{LaPoudre.image}}" alt"Card image"></img></td>
         <td class="col-2"> {{LaPoudre.nom}}</td>
         <td class="col-7">
         <p class="d-flex flex-row">
-          <span> {{}} </span>
-          <span></span>
-          <span></span>
+          <span class="align-self-center badge-sucess"> {{LaPoudre.materiaux}} </span>
+          <span class="align-self-center mx-3"> {{LaPoudre.couleur}} </span>
+          <span class="align-self-center ml-auto"> {{LaPoudre.duréeDeVie}} </span>
+          <span class="align-self-center ml-auto"> {{LaPoudre.taille}} </span>
         </p>
+        <p>{{ LaPoudre.description|slice(0,200)|raw}}...</p>
         </td>
+        <td class="col-2"></td>
+        <a href="" class="btn btn-primary">modifier</a>
+        
         </tr>
       {% endfor %}
   </tbody>
