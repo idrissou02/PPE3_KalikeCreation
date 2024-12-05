@@ -39,7 +39,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objets décoratifs</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('app_objetdecoration') }}">Liste des Objets Décoratifs</a>
+                                <a class="dropdown-item" href="{{ path('app_liste_objetdecoration') }}">Liste des Objets Décoratifs</a>
                             </div>
                         </li>
 
@@ -73,27 +73,6 @@
                   <a class="dropdown-item" href=" ">Bougie Moulée</a>
                 </div>
               </li>  
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des fondants</a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href=" ">Fondant</a>
-                </div>
-              </li>
-                <!-- Objet décoratifs -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objets décoratifs</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('app_liste_objetdecoration') }}">Liste des Objets Décoratifs</a>
-                            </div>
-                        </li>
-
-                        <!-- Diffuseur de voiture -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Diffuseur de voiture</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('app_liste_diffuseurvoiture') }}">Diffuseur de voiture</a>
-                            </div>
-                        </li>
 
                         <!-- Administration (seulement visible pour les admins) -->
                         {% if is_granted('ROLE_ADMIN') %}
@@ -119,6 +98,16 @@
                   <div class="dropdown-divider"></div>
                 </div>
               </li>
+               <a href="{{path('app_login')}}">
+               <button type="button" class="btn connexion btn-outline-success">
+                  Se connecter
+              </button>
+              </a>
+              <a href="{{path('app_register')}}">
+               <button type="button" class="btn connexion btn-outline-primary">
+                  S'inscrire'
+              </button>
+              </a>
             </ul>  
           </div>
       </div>
