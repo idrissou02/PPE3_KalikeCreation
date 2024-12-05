@@ -16,9 +16,6 @@ load:
 	php bin/console doctrine:fixtures:load
 .PHONY: load
 
-
-
-
 addGit: #ça envoie un push tout seul
 	git add --all
 	git commit -m ""
