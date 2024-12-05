@@ -1,20 +1,19 @@
+bdd: #Migration automatique
+	$(MAKE) oui
+	$(MAKE) doctrine
+.PHONY: bdd
+	
+
 oui: #Migration automatique
-	$(MAKE) mm
-	$(MAKE) dmm
-	$(MAKE) load
+	php bin/console doctrine:schema:update --force
+   
 .PHONY: oui
 	
-mm:
-	php bin/console make:migration --no-interaction
-.PHONY: mm
 
-dmm:
-	php bin/console d:m:m --no-interaction
-.PHONY: dmm
+doctrine: #ça lance les fixtures
+	 php bin/console doctrine:fixtures:load
+.PHONY: doctrine
 
-load:
-	php bin/console doctrine:fixtures:load
-.PHONY: load
 
 addGit: #ça envoie un push tout seul
 	git add --all
@@ -24,3 +23,5 @@ addGit: #ça envoie un push tout seul
 updateGit: #ça actualise ta branche actuel avec le main
 	git fetch origin main
 	git merge origin/main
+
+	
