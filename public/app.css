@@ -10,8 +10,17 @@
     background-color: blueviolet;
 }
 
+.btn-outline-primary{
+    background-color: #c74ae0;
+}
+
+.btn {
+    background-color: transparent;
+}
+
 
 /* le css de FichePoudre.html.twig */
 .col-md-6.mb-4 {
     margin-right: 10px; 
 }
+
