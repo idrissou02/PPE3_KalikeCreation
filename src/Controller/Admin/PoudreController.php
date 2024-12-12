@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Poudre;
+use App\Form\PoudreType;
 use App\Repository\PoudreRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,8 +23,10 @@ class PoudreController extends AbstractController
     #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:"GET")]
     public function ajoutPoudres(): Response
     {
-        return $this->render('admin/poudre/listePoudre.html.twig', [
-            'lesPoudres' => $poudres
+        $poudre=new Poudre();
+        $from=$this->createForm(PoudreType::class,);
+        return $this->render('admin/poudre/formAjoutPoudre.html.twig', [
+            'formPoudre' => $form->createView()
         ]);
     }
 }
