@@ -17,4 +17,12 @@ class PoudreController extends AbstractController
             'lesPoudres' => $poudres
         ]);
     }
+
+    #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:"GET")]
+    public function ajoutPoudres(): Response
+    {
+        return $this->render('admin/poudre/listePoudre.html.twig', [
+            'lesPoudres' => $poudres
+        ]);
+    }
 }
