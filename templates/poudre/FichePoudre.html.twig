@@ -6,6 +6,10 @@
 <h1 class="pt-2 text-center">Fiche de la Poudre </h1>
   <div class="container">
 
+<div class="mt-4">
+          <a href="{{ path('poudre') }}" class="mb-4 btn btn-secondary">Retour à la liste</a>
+        </div>
+
     <div class="row">
       <div class="col-md-6 mb-4">
         <img src="{{ LaPoudre.image }}" class="img-fluid rounded" alt="Image de {{ LaPoudre.nom }}">
@@ -33,9 +37,6 @@
     <h4 class="card-title"><strong>Description</strong></h4>
     <p class="card-text">{{ LaPoudre.description }}</p>
   </div> 
-        {# <div class="mt-4">
-          <a href="{{ path('poudre/listePoudres') }}" class="btn btn-secondary">Retour à la liste</a>
-        </div> #}
       </div>
     </div>
   </div>

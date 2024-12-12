@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
                         ->setPrix(3.3)
                         ->setCouleur($value[4])     
                         ->setPoids(5.5)
-                        ->setDuréeDeVie($value[6])
+                        ->setDureeDeVie($value[6])
                         ->setTaille($value[7.7])
                         ->setDescription($value[8])
                         ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
