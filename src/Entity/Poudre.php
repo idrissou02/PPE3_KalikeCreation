@@ -30,7 +30,7 @@ class Poudre
     private ?float $poids = null;
 
     #[ORM\Column]
-    private ?int $duréeDeVie = null;
+    private ?int $dureeDeVie = null;
 
     #[ORM\Column]
     private ?float $taille = null;
@@ -106,14 +106,14 @@ class Poudre
         return $this;
     }
 
-    public function getDuréeDeVie(): ?int
+    public function getDureeDeVie(): ?int
     {
-        return $this->duréeDeVie;
+        return $this->dureeDeVie;
     }
 
-    public function setDuréeDeVie(int $duréeDeVie): static
+    public function setDureeDeVie(int $dureeDeVie): static
     {
-        $this->duréeDeVie = $duréeDeVie;
+        $this->dureeDeVie = $dureeDeVie;
 
         return $this;
     }

@@ -4,6 +4,7 @@
 
 {% block body %}
 <h1 class="pt-2 text-center">Nos poudres parfumée</h1>
+<a href=" {{ path("admin_poudre_ajout")}} " class="btn btn-sucess">Ajouter un artiste</a>
 <hr>
 <table class="table table-hover">
   <thead>
@@ -19,13 +20,14 @@
         {# {% set variable_name = expression %} #}
         <tr>
         <td class="col-2"><img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{LaPoudre.image}}" alt"Card image"></img></td>
-        <td class="col-2"> {{LaPoudre.nom}}</td>
+        <td class="col-2">{{LaPoudre.nom}}</td>
         <td class="col-7">
         <p class="d-flex flex-row">
-          <span class="align-self-center badge-sucess"> {{LaPoudre.materiaux}} </span>
+          <span class="align-self-center badge-sucess"> {{LaPoudre.prix}}€</span>
+          <span class="align-self-center mx-3"> {{LaPoudre.materiaux}} </span>
           <span class="align-self-center mx-3"> {{LaPoudre.couleur}} </span>
           <span class="align-self-center ml-auto"> {{LaPoudre.duréeDeVie}} </span>
-          <span class="align-self-center ml-auto"> {{LaPoudre.taille}} </span>
+          <span class="align-self-center mx-3"> {{LaPoudre.taille}} </span>
         </p>
         <p>{{ LaPoudre.description|slice(0,200)|raw}}...</p>
         </td>

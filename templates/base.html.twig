@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Kaline Création{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
-        <link rel="stylesheet" href="{{asset('CSS/app.css')}}">
+        <link rel="stylesheet" href="{{asset('app.css')}}">
         <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -45,7 +45,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="">Objet Décoratifs</a>
+                  <a class="dropdown-item" href=" {{path('app_liste_objetdecoration')}} ">Objet Décoratifs</a>
                 </div>  
               </li>
               <li class="nav-item dropdown">
@@ -83,17 +83,28 @@
                   <div class="dropdown-divider"></div>
                 </div>
               </li>
-              <a href="{{path('app_login')}}">
-               <button type="button" class="btn connexion btn-outline-success">
-                  Se connecter
-              </button>
-              <a href="{{path('app_register')}}">
-               <button type="button" class="btn connexion btn-outline-primary">
-                  S'inscrire'
-              </button>
-
-            </ul>  
-            </a>  
+              {% if app.user %}
+                    <ul class="navbar-nav my-auto">
+                      <li class="nav-item"> 
+                        <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}">
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"> 
+              {% else %}
+                      <a href="{{path('app_login')}}">
+                        <button type="button" class="btn connexion btn-outline-success">
+                            Se connecter
+                        </button>
+                      </a>
+                      <a href="{{path('app_register')}}">
+                        <button type="button" class="btn connexion btn-outline-primary">
+                            S'inscrire'
+                        </button>
+                      </a> 
+                  </ul>  
+              {% endif %}
+            
+    
           </div>
       </div>
   </nav>
