@@ -6,22 +6,60 @@ use App\Entity\Poudre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PoudreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('materiaux')
-            ->add('prix')
-            ->add('couleur')
-            ->add('poids')
-            ->add('duréeDeVie')
-            ->add('taille')
-            ->add('image')
-            ->add('description')
-        ;
+            ->add('nom',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('materiaux',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('prix',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('couleur',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('poids',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('dureeDeVie',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('taille',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('image',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ])
+            ->add('description',TextType::class,[
+                'attr' => ['class' => 'text form-control']  
+                    
+                
+            ]);
+            
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
