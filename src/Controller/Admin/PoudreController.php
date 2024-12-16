@@ -24,7 +24,7 @@ class PoudreController extends AbstractController
     public function ajoutPoudres(): Response
     {
         $poudre=new Poudre();
-        $from=$this->createForm(PoudreType::class,);
+        $form=$this->createForm(PoudreType::class,);
         return $this->render('admin/poudre/formAjoutPoudre.html.twig', [
             'formPoudre' => $form->createView()
         ]);
