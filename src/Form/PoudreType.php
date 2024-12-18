@@ -7,57 +7,29 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PoudreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
+            ->add('image')
+            ->add('nom', TextType::class,[
+                'label'=> "Nom de la poudre parfumée",
+                'attr'=>[
+                    "placeholder"=>"saisier le nom de la poudre parfumée"
+                ]
             ])
-            ->add('materiaux',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('prix',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('couleur',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('poids',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('dureeDeVie',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('taille',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('image',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ])
-            ->add('description',TextType::class,[
-                'attr' => ['class' => 'text form-control']  
-                    
-                
-            ]);
+            ->add('prix', integerType::class)
+            ->add('materiaux', TextType::class)
+            ->add('couleur', TextType::class)
+            ->add('dureeDeVie', integerType::class)
+            ->add('taille', integerType::class)
+            ->add('description', TextareaType::class);
+            // ->add('valdier', SubmitType::class);
+ 
             
         
     }
