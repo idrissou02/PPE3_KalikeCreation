@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PoudreType extends AbstractType
 {
@@ -15,13 +16,18 @@ class PoudreType extends AbstractType
     {
         $builder
             ->add('image')
-            ->add('nom')
-            ->add('prix')
-            ->add('materiaux')
-            ->add('couleur')
-            ->add('dureeDeVie')
-            ->add('taille')
-            ->add('description');
+            ->add('nom', TextType::class,[
+                'label'=> "Nom de la poudre parfumée",
+                'attr'=>[
+                    "placeholder"=>"saisier le nom de la poudre parfumée"
+                ]
+            ])
+            ->add('prix', integerType::class)
+            ->add('materiaux', TextType::class)
+            ->add('couleur', TextType::class)
+            ->add('dureeDeVie', integerType::class)
+            ->add('taille', integerType::class)
+            ->add('description', TextareaType::class);
             // ->add('valdier', SubmitType::class);
  
             
