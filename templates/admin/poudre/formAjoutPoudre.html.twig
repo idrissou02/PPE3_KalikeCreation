@@ -4,5 +4,25 @@
 
 {% block body %}
 <h1 class="pt-2 text-center">Ajout de poudres parfumée</h1>
-{{form(formPoudre)}}
+{{form_start(formPoudre)}}
+
+
+{{form_row(formPoudre.image)}}
+{{form_row(formPoudre.nom)}}
+{{form_row(formPoudre.prix)}}
+<div class="row">
+    <div class="col">{{form_row(formPoudre.taille)}}</div>
+    <div class="col">{{form_row(formPoudre.dureeDeVie)}}</div>
+    <div class="col">{{form_row(formPoudre.materiaux)}}</div>
+    <div class="col">{{form_row(formPoudre.couleur)}}</div>
+</div>
+{{form_row(formPoudre.description)}}
+<input type="submit", class="btn btn-sucess" value="valdier">
+
+</div>
+
+
+
+
+{{form_end(formPoudre)}}
 {% endblock %}
