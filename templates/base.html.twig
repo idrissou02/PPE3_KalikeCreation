@@ -55,31 +55,12 @@
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ path('admin_objetdecoration_ajouter') }}">Ajouter un Objet Décoratif</a>
-                                    <a class="dropdown-item" href="{{ path('admin_objetdecoration_liste') }}">Gestion des Objets Décoratifs</a>
+                                    <a class="dropdown-item" href="{{ path('app_liste_objetdecoration') }}">Gestion des Objets Décoratifs</a>
                                 </div>
                             </li>
                         {% endif %}
                     </ul>
                 </div>
-                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href=" ">Bougie Gourmande</a>
-                </div>
-                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href=" ">Bougie Fondante</a>
-                </div>
-                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href=" ">Bougie Moulée</a>
-                </div>
-              </li>  
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ path('admin_objetdecoration_ajouter') }}">Ajouter un Objet Décoratif</a>
-                                    <a class="dropdown-item" href="{{ path('admin_objetdecoration_liste') }}">Gestion des Objets Décoratifs</a>
-                                </div>
-                            </li>
-                        {% endif %}
               </li>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="{{path('poudre') }}">Poudre Parfumée</a>
