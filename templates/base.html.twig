@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}Kaline Création{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
+
         <link rel="stylesheet" href="{{asset('app.css')}}">
-        <link rel="stylesheet" href="{{ asset('CSS/app.css') }}">
         <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -75,19 +75,18 @@
                   <div class="dropdown-divider"></div>
                 </div>
               </li>
-  <ul class="navbar-nav my-auto">
+                <ul class="navbar-nav my-auto">
               {% if app.user %}
-                  
-                      <li class="nav-item"> 
-                        <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}">
+                      <li class="nav-item "> 
+                        <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}"> </img>
                         </li>
-                        <a class="nav-link dropdown-toggle" data-bs-toggle"dropdown" href="#" role"button" aria-haspopup="true" aria-expanded="false">{{ app.user.nom }}</a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Mon Profil</a>
+                        <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">{{ app.user.nom }}</a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Mon Profil</a>                                                                                                                                                                                                                                     
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </div>
-                      <li>
+                      </li>
               {% else %}
                       <a href="{{path('app_login')}}">
                         <button type="button" class="btn connexion btn-outline-success">
