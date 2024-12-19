@@ -17,7 +17,12 @@
     <div class="col">{{form_row(formPoudre.couleur)}}</div>
 </div>
 {{form_row(formPoudre.description)}}
-<input type="submit", class="btn btn-sucess" value="valdier">
+<div class="row">
+    <div class="col"><input type="submit", class="btn btn-success btn-block form-control" value="valdier"></div>
+    <div class="col"><a href="{{path('admin_poudre')}}" class="btn btn-warning btn-block form-control">Annuler</a></div>
+</div>
+
+
 
 </div>
 
