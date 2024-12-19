@@ -4,44 +4,50 @@
 
 {% block body %}
 <h1 class="pt-2 text-center">Fiche de la Poudre </h1>
-  <div class="container">
+<div class="container">
+  <!-- Bouton de retour à la liste des poudres -->
+  <div class="mt-4">
+    <a href="{{ path('poudre') }}" class="mb-4 btn btn-secondary">Retour à la liste</a>
+  </div>
 
-<div class="mt-4">
-          <a href="{{ path('poudre') }}" class="mb-4 btn btn-secondary">Retour à la liste</a>
+  <div class="row">
+    <!-- Image de la poudre -->
+    <div class="col-md-6 mb-4">
+      <img src="{{ LaPoudre.image }}" class="img-fluid rounded" alt="Image de {{ LaPoudre.nom }}">
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h3><u>{{ LaPoudre.nom }}</u></h3>
         </div>
-
-    <div class="row">
-      <div class="col-md-6 mb-4">
-        <img src="{{ LaPoudre.image }}" class="img-fluid rounded" alt="Image de {{ LaPoudre.nom }}">
-      </div>
-      
-      <div class="col-md-6 mb-4">
-   <div class="card-header"><h3><u>{{LaPoudre.nom}}</u></h3></div>
-             <h4>Prix : {{ LaPoudre.prix }} €</h4>
-  <div class="card-body">
-  <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        <strong>Information</strong>
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-      <div class="accordion-body">
-      <h6>materiaux : {{LaPoudre.materiaux}}</h6>
-      <h6>couleur : {{LaPoudre.couleur}}</h6>
-      <h6>durée de vie : {{LaPoudre.dureeDeVie}}h</h6>
-      <h6>taille : {{LaPoudre.taille}} </h6>
-      </div>
-    </div>
-    <h4 class="card-title"><strong>Description</strong></h4>
-    <p class="card-text">{{ LaPoudre.description }}</p>
-  </div> 
+        <div class="card-body">
+          <h4>Prix : {{ LaPoudre.prix }} €</h4>
+          <h4 class="card-title"><strong>Description</strong></h4>
+          <p class="card-text">{{ LaPoudre.description }}</p>
+          <!-- Accordéon pour informations supplémentaires -->
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Informations supplémentaires
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <h6>Matériaux : {{ LaPoudre.materiaux }}</h6>
+                  <h6>Couleur : {{ LaPoudre.couleur }}</h6>
+                  <h6>Durée de vie : {{ LaPoudre.dureeDeVie }}h</h6>
+                  <h6>Taille : {{ LaPoudre.taille }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
+</div>
   
 {% endblock %}
 

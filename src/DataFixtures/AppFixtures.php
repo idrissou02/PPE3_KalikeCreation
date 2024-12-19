@@ -72,7 +72,7 @@ class AppFixtures extends Fixture
                         ->setMateriaux($value[2])
                         ->setPrix(3.3)
                         ->setCouleur($value[4])     
-                        ->setPoids(5.5)
+                        ->setPoids(5)
                         ->setDureeDeVie($value[6])
                         ->setTaille($value[7.7])
                         ->setDescription($value[8])
@@ -94,12 +94,11 @@ class AppFixtures extends Fixture
                         ->setMateriaux($value[2])
                         ->setPrix($value[3])
                         ->setCouleur($value[4])     
-                        ->setPoids($value[5])
                         ->setDuréeDeVie($value[6])
                         ->setTaille($value[7])
                         ->setDescription($value[8])
                         ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
-                        $manager->persist($diffuseur);
+                        $manager->persist($DiffuseurVoiture);
         }
             $manager->flush();
     }
