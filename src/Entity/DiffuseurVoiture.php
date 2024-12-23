@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\PoudreRepository;
+use App\Repository\DiffuseurVoitureRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PoudreRepository::class)]
-class Poudre
+#[ORM\Entity(repositoryClass: DiffuseurVoitureRepository::class)]
+class DiffuseurVoiture
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,16 +30,16 @@ class Poudre
     private ?float $poids = null;
 
     #[ORM\Column]
-    private ?int $dureeDeVie = null;
+    private ?int $duréeDeVie = null;
 
     #[ORM\Column]
     private ?float $taille = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
-    #[ORM\Column(length: (255))]
     private ?string $description = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
     public function getId(): ?int
     {
@@ -106,18 +106,17 @@ class Poudre
         return $this;
     }
 
-    public function getDureeDeVie(): ?int
+    public function getDuréeDeVie(): int
     {
-        return $this->dureeDeVie;
+        return $this->duréeDeVie;
     }
 
-    public function setDureeDeVie(int $dureeDeVie): static
+    public function setDuréeDeVie(int $duréeDeVie): self
     {
-        $this->dureeDeVie = $dureeDeVie;
+        $this->duréeDeVie = $duréeDeVie;
 
         return $this;
     }
-
     public function getTaille(): ?float
     {
         return $this->taille;
@@ -130,18 +129,6 @@ class Poudre
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): static
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -150,6 +137,18 @@ class Poudre
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

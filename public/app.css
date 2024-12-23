@@ -2,11 +2,28 @@
     font-size: 30px;
 } 
 
-.connexion {
-    background-color: aquamarine;
+.connexion img{
+            border-radius: 50%; /* Arrondi complet pour un cercle */
+            overflow: hidden; /* Coupe les parties débordantes */
+            object-fit: cover; /* Ajuste l'image pour qu'elle remplisse le conteneur */
+            border: 5px solid #000; /* Optionnel : bordure */
 }
 
-.connexion:hover {
-    background-color: blueviolet;
+.btn-outline-primary{
+    background-color: #c74ae0;
+}
+
+.btn {
+    background-color: transparent;
+}
+
+.supermini {
+    max-width: 50px;
+    height: auto;
+}
+
+/* le css de FichePoudre.html.twig */
+.col-md-6.mb-4 {
+    margin-right: 10px; 
 }
 

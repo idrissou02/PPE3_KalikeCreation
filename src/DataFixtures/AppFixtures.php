@@ -6,6 +6,7 @@ use Faker\Factory;
 use App\Entity\Bougie;
 use App\Entity\Poudre;
 use App\Entity\ObjetDecoration;
+use App\Entity\DiffuseurVoiture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -20,7 +21,6 @@ class AppFixtures extends Fixture
 
         $this->loadObjetsDecoration($manager);
 
-        $this->loadPoudre($manager);
     }
 
     private function loadBougies(ObjectManager $manager): void
@@ -70,13 +70,35 @@ class AppFixtures extends Fixture
             $poudre    
                         ->setNom($value[1])
                         ->setMateriaux($value[2])
-                        ->setPrix($value[3])
+                        ->setPrix(3.3)
                         ->setCouleur($value[4])     
-                        ->setPoids(3.4)
-                        ->setDuréeDeVie($value[6])
-                        ->setTaille($value[6])
+                        ->setPoids(5)
+                        ->setDureeDeVie($value[6])
+                        ->setTaille($value[7.7])
+                        ->setDescription($value[8])
                         ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
                         $manager->persist($poudre);
+        }
+            $manager->flush();
+    }
+
+    private function loadDiffuseurVoiture(ObjectManager $manager): void
+    {
+        $LesDiffuseursVoiture = $this->chargefichier("DiffuseurVoiture.csv");
+
+        foreach ($LesDiffuseursVoiture as $value)
+        {
+            $DiffuseurVoiture=new DiffuseurVoiture();
+            $DiffuseurVoiture    
+                        ->setNom($value[1])
+                        ->setMateriaux($value[2])
+                        ->setPrix($value[3])
+                        ->setCouleur($value[4])     
+                        ->setDuréeDeVie($value[6])
+                        ->setTaille($value[7])
+                        ->setDescription($value[8])
+                        ->setImage('https://lorempicture.point-sys.com/400/300/'.mt_rand(1,30));
+                        $manager->persist($DiffuseurVoiture);
         }
             $manager->flush();
     }
