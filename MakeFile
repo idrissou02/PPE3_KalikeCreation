@@ -27,4 +27,20 @@ updateGit: #ça actualise ta branche actuel avec le main
 	git fetch origin main
 	git merge origin/main
 
-	
+test-pest: ## Do a test on all file and show you the coverage if there is no failed test
+   @echo "Running Pest tests..."
+   @OUTPUT=`$(PEST) >test-info.txt 2>&1`; \
+   RETVAL=$$?; \
+if [ $$RETVAL -eq 0 ]; then \
+   echo "Pest tests passed"; \
+   echo ''; \
+   sed -n '9p' ./coverage_summary.txt ; \
+   echo ''; \
+   rm ./coverage_summary.txt; \
+else \
+   echo ''; \
+   grep "^  Tests:" test-info.txt ; \
+   echo ''; \
+   echo "Pest tests failed"; \
+   rm test-info.txt ; \
+fi
