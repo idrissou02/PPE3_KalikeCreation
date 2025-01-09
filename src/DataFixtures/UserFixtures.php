@@ -3,18 +3,20 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
-    private $password;
+    private $userPassword;
 
     public function __construct(UserPasswordHasherInterface $userPasswordHasher) {
-        $this->$password= $userPasswordHasher;
+        $this->userPassword= $userPasswordHasher;
 
     }
+
     public function load(ObjectManager $manager): void
     {
         $faker=Factory::create("fr_FR");
@@ -27,13 +29,13 @@ class UserFixtures extends Fixture
                 $type="women" ;  
             }  
            
-            $contact= new User();
-            $contact    ->setNom($faker->lastname())
+            $user= new User();
+            $user    ->setNom($faker->lastname())
                         ->setPrenom($faker->firstname())
                         ->setEmail($faker->email())
                         ->setSexe($sexe)
                         ->setAvatar('https://randomuser.me/api/portraits/'.$faker->randomElement($genres)."/".mt_rand(1,99).".jpg")     
-                        ->setPassword( $this->password->hashedPassword( 
+                        ->setPassword( $this->userPassword->hashPassword( 
                             $user,
                             "test3421"  
                         ))
@@ -41,9 +43,19 @@ class UserFixtures extends Fixture
             $manager->persist($user);
 
         }
-
-
-
+        $admin= new User();
+        $admin    ->setNom("admin")
+                    ->setPrenom("idriss")
+                    ->setEmail("admin@gmail.com")
+                    ->setSexe(1)
+                    ->setRoles(['ROLE_ADMIN'])
+                    ->setAvatar('https://randomuser.me/api/portraits/women/2.jpg')     
+                    ->setPassword( $this->userPassword->hashPassword( 
+                        $admin,
+                        "testadmin"  
+                    ))
+                    ;
+        $manager->persist($admin);
         $manager->flush();
     }
 }
