@@ -7,21 +7,20 @@
 <hr>
 <div class="row pt-2">
     {% for LaPoudre in LesPoudres%}
-        <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
-            <div class="card mb-3">
-                    <h3 class="card-header"> <a href="{{path('FichePoudre',{'id': LaPoudre.id})}}">  {{LaPoudre.nom}} </a></h3>
-                    <div class="card-body">
-                        <h5 class="card-title"> 
-                            <img class="avatar mx-auto d-block" src="{{LaPoudre.image}}" alt"">  </img>
-                        </h5> 
-                        <p class="card-text prix"> {{LaPoudre.prix}} €</p> 
-                    </div>
-
-            </div>      
-        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="{{ LaPoudre.image }}" class="card-img-top" alt="Image de {{ LaPoudre.nom }}">
+              <div class="card-body">
+                <a class="dropdown-item" href="{{ path('FichePoudre', {'id': LaPoudre.id }) }}"><strong><u>{{ LaPoudre.nom }}</u></strong></a>
+                <p class="card-text">{{ LaPoudre.description }}</p>
+                <p class="card-text"><strong>Prix :</strong> {{ LaPoudre.prix }} €</p>
+              </div>
+            </div>
+          </div>
     {% endfor %}
 
 </div>
 <br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
+
  
