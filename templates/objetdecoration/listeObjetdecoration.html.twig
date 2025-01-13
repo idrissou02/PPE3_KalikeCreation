@@ -17,10 +17,6 @@
                 <p class="card-text">{{ objet.description }}</p>
                 <p class="card-text"><strong>Prix :</strong> {{ objet.prix }} €</p>
                 <a class="dropdown-item" href="{{ path('app_fiche_objetdecoration', {'id': objet.id }) }}">Fiche Objet Décoratif</a>
-
-                <form action="{{ path('admin_objetdecoration_supprimer', {'id': objet.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet objet décoratif ?');">
-                  <button type="submit" class="btn btn-danger mt-3">Supprimer</button>
-                </form>
               </div>
             </div>
           </div>
