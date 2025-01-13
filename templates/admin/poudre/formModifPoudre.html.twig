@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion Poudre Parmuée{% endblock %}
+{% block title %}Modification Poudre Parmuée{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Ajout de poudres parfumée</h1>
+<h1 class="pt-2 text-center">Modification de poudres parfumée</h1>
 {{form_start(formPoudre)}}
 
 
@@ -21,6 +21,13 @@
     <div class="col"><input type="submit", class="btn btn-outline-success btn-block form-control" value="valdier"></div>
     <div class="col"><a href="{{path('admin_poudre')}}" class="btn btn-outline-warning btn-block form-control">Annuler</a></div>
 </div>
+
+
+
 </div>
+
+
+
+
 {{form_end(formPoudre)}}
 {% endblock %}
