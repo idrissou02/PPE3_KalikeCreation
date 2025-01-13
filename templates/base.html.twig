@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Kaline Création{% endblock %}</title>
@@ -88,92 +87,6 @@
                             <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </div>
                       </li>
-=======
-  <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Kaline Création{% endblock %}</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('app.css')}}">
-    <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-    {% block stylesheets %}
-      {{ encore_entry_link_tags('app') }}
-    {% endblock %}
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Kaline Creation</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor04">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des bougies</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{path('bougie')}}">Liste Bougies</a>
-              </div>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href=" ">Bougie Gourmandes</a>
-              </div>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href=" ">Bougie Fondante</a>
-              </div>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href=" ">Bougie Moulée</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des fondants</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="">Fondant</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objet décoratifs</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href=" {{path('app_liste_objetdecoration')}} ">Objet Décoratifs</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste de Parfum</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{path('poudre') }}">Poudre Parfmée</a>
-              </div>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{path('app_liste_diffuseurvoiture')}}">diffuseur de voiture</a>
-              </div>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="">suspension parfumée</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{path('admin_poudre') }}">Gestion des Poudres Parfmées</a>
-              </div>
-            
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="">Gestion des Objets Décorations</a>
-            </div>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href=" ">Gestion de diffuseur de voiture</a>
-            </div>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href=" ">Gestion de suspension parfumée</a>
-            </div>
-            </li>
-            <div class="dropdown-divider"></div>
-          </ul>
-          {% if app.user %}
-            <ul class="navbar-nav my-auto">
-              <li class="nav-item">
-                <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}">
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle">
->>>>>>> origin/main
               {% else %}
                 <a href="{{path('app_login')}}">
                   <button type="button" class="btn connexion btn-outline-success">
@@ -220,10 +133,6 @@
             </button>
           </a>
         </div>
-<<<<<<< HEAD
-    </body>
-</html>
-=======
         <!-- Copyright -->
         <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           © 2020 Copyright:
@@ -235,4 +144,3 @@
     <!-- End of .container -->
   </body>
 </html>
->>>>>>> origin/main
