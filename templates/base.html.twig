@@ -1,5 +1,94 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Kaline Création{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
+
+        <link rel="stylesheet" href="{{asset('app.css')}}">
+        <script src="https://kit.fontawesome.com/d8c04e6e7c.js" crossorigin="anonymous"></script>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Kaline Creation</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor04">
+                    <ul class="navbar-nav me-auto">
+                        <!-- Liste des bougies -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des bougies</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('bougie') }}">Liste Bougies</a>
+                            </div>
+                        </li>
+                        <!-- Liste des fondants -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des fondants</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Fondant</a>
+                            </div>
+                        </li>
+                        <!-- Objet décoratifs -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objets décoratifs</a>
+                            <div class="dropdown-menu">
+                       <a class="dropdown-item" href="{{ path('app_liste_objetdecoration') }}">Liste des Objets Décoratifs</a>
+                            </div>
+                        </li>
+                        <!-- Diffuseur de voiture -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Diffuseur de voiture</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('app_liste_diffuseurvoiture') }}">Diffuseur de voiture</a>
+                            </div>
+                        </li>
+
+                        <!-- Administration (seulement visible pour les admins) -->
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('admin_objetdecoration_ajouter') }}">Ajouter un Objet Décoratif</a>
+                                    <a class="dropdown-item" href="{{ path('app_liste_objetdecoration') }}">Gestion des Objets Décoratifs</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+              </li>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{path('poudre') }}">Poudre Parfumée</a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">     </a>
+                </div>
+                 <div class="dropdown-menu">
+                  <a class="dropdown-item" href=" ">     </a>
+                </div>
+              </li>    
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+                <ul class="navbar-nav my-auto">
+              {% if app.user %}
+                      <li class="nav-item "> 
+                        <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}"> </img>
+                        </li>
+                        <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">{{ app.user.nom }}</a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Mon Profil</a>                                                                                                                                                                                                                                     
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </div>
+                      </li>
+=======
   <head>
     <meta charset="UTF-8">
     <title>{% block title %}Kaline Création{% endblock %}</title>
@@ -108,6 +197,7 @@
             </button>
           </a>
         </div>
+        <!-- Copyright -->
         <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           © 2020 Copyright:
           <a class="text-white" href="https://www.kalinecreation.com/boutique/">oui</a>
@@ -116,3 +206,4 @@
     </div>
   </body>
 </html>
+>>>>>>> origin/main
