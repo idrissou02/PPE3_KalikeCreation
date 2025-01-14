@@ -7,6 +7,7 @@
 <hr>
 <div class="row pt-2">
     {% for LaBougie in LesBougies%}
+<<<<<<< HEAD
         <div class="col-md-4 mb-4">
             <div class="card">
               <img src="{{ LaBougie.image }}" class="card-img-top" alt="Image de {{ LaBougie.NomB }}">
@@ -16,6 +17,19 @@
               </div>
             </div>
           </div>
+=======
+        <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
+            <div class="card mb-3">
+                    <h3 class="card-header"> <a href="{{path('ficheBougie',{'id': LaBougie.id})}}">  {{LaBougie.nomB}} </a></h3>
+                    <div class="card-body">
+                        <h5 class="card-title"> 
+                            <img class="avatar mx-auto d-block" src="{{LaBougie.image}}" alt""> </img>
+                        </h5> 
+                        <p class="card-text prix"> {{LaBougie.prix}} €</p> 
+                    </div>
+            </div>      
+        </div>
+>>>>>>> origin/main
     {% endfor %}
 
 </div>

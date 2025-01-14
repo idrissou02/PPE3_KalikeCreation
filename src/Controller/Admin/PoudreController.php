@@ -47,4 +47,13 @@ class PoudreController extends AbstractController
             'formPoudre' => $form->createView()
         ]);
     }
+
+    #[Route('/admin/poudre/ajout/suppression{id}', name: 'admin_poudre_suppression', methods:"DELETE")]
+    public function suppressionPoudre( Poudre $poudre=null, EntityManagerInterface $manager): Response
+    {
+            $manager->remove($poudre);
+            $manager->flush();
+            $this->addFlash("success", "La poudre a bien été suppression");
+            return$this->redirectToRoute('admin_poudre');
+    }
 }

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion Poudre Parmuée{% endblock %}
+{% block title %}Gestion Poudre Parfumée{% endblock %}
 
 {% block body %}
 <h1 class="pt-2 text-center">Nos poudres parfumées</h1>
-<a href=" {{ path("admin_poudre_ajout")}} " class="btn btn-sucess">Ajouter une Poudre Parfumée</a>
+<a href="{{ path('admin_poudre_ajout') }}" class="btn btn-success">Ajouter une Poudre Parfumée</a>
 <hr>
 <table class="table table-hover">
   <thead>
@@ -16,30 +16,39 @@
     </tr>
   </thead>
   <tbody>
-      {% for LaPoudre in lesPoudres %}
-        {# {% set variable_name = expression %} #}
-        <tr>
-        <td class="col-2"><img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{LaPoudre.image}}" alt"Card image"></img></td>
-        <td class="col-2">{{LaPoudre.nom}}</td>
+    {% for LaPoudre in lesPoudres %}
+      <tr>
+        <td class="col-2">
+          <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ LaPoudre.image }}" alt="Card image">
+        </td>
+        <td class="col-2">{{ LaPoudre.nom }}</td>
         <td class="col-7">
-        <p class="d-flex flex-row">
-          <span class="align-self-center badge-sucess"> {{LaPoudre.prix}}€</span>
-          <span class="align-self-center mx-3"> {{LaPoudre.materiaux}} </span>
-          <span class="align-self-center mx-3"> {{LaPoudre.couleur}} </span>
-          <span class="align-self-center ml-auto"> {{LaPoudre.dureeDeVie}} </span>
-          <span class="align-self-center mx-3"> {{LaPoudre.taille}} </span>
-        </p>
-        <p>{{ LaPoudre.description|slice(0,200)|raw}}...</p>
+          <p class="d-flex flex-row">
+            <span class="align-self-center badge-success">{{ LaPoudre.prix }}€</span>
+            <span class="align-self-center mx-3">{{ LaPoudre.materiaux }}</span>
+            <span class="align-self-center mx-3">{{ LaPoudre.couleur }}</span>
+            <span class="align-self-center ml-auto">{{ LaPoudre.dureeDeVie }}</span>
+            <span class="align-self-center mx-3">{{ LaPoudre.taille }}</span>
+          </p>
+          <p>{{ LaPoudre.description|slice(0, 200)|raw }}...</p>
         </td>
         <td class="col-2">
-        <a href=" {{path('admin_poudre_modif', {'id': LaPoudre.id })}} " class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
+          <a href="{{ path('admin_poudre_modif', {'id': LaPoudre.id}) }}" class="btn btn-outline-success">
+            <i class="fas fa-pen"></i>
+          </a>
         </td>
-        <td><a type="button" class="btn btn-outline-danger" data-toggle="modalSimple" data-target="#exampleModal"><i class="fa-solid fa-trash"></i></a></td>
-        </tr>
-      {% endfor %}
+        <td>
+          <a type="button" class="btn btn-outline-danger" data-toggle="modalSimple" data-target="#exampleModal">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
-
+<div class="navigation mx-auto">
+  {{ knp_pagination_render(lesPoudres) }}
 </div>
 <br><br><br><br><br><br><br><br><br><br><br>
+{{ include "include/_modale.html.twig"}}
 {% endblock %}

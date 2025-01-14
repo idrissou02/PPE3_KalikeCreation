@@ -13,8 +13,13 @@
     background-color: #c74ae0;
 }
 
-.btn {
-    background-color: transparent;
+
+.btn-outline-success{
+    background-color: #027e02;
+}
+
+.btn-outline-danger{
+    background-color: #670101;
 }
 
 .supermini {
@@ -22,6 +27,9 @@
     height: auto;
 }
 
+.valider {
+    background-color: #2f0bd3;
+}
 /* le css de FichePoudre.html.twig */
 .col-md-6.mb-4 {
     margin-right: 10px; 
