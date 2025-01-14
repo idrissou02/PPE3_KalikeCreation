@@ -21,28 +21,10 @@ class PoudreController extends AbstractController
             'lesPoudres' => $poudres
         ]);
     }
-
-    #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:"GET")]
-    public function ajoutPoudre( Request $request, EntityManagerInterface $manager): Response
-    {
-        $poudre=new Poudre();
-        $form=$this->createForm(PoudreType::class, $poudre);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid() )
-        {
-            $manager->persist($poudre);
-            $manager->flush();
-            $this->addFlash('success', 'La poudre a bien été ajoutée');
-            return$this->redirectToRoute('admin_poudre');
-        }
-        return $this->render('admin/poudre/formAjoutPoudre.html.twig', [
-            'formPoudre' => $form->createView()
-        ]);
-    }
-
+    
     #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:["GET","POST"])]
     #[Route('/admin/poudre/ajout/modif{id}', name: 'admin_poudre_modif', methods:["GET","POST"])]
-    public function ajoutModifPoudre( Poudre $poudre=null, Request $request, EntityManagerInterface $manager): Response
+    public function ajoutPoudre( Poudre $poudre=null, Request $request, EntityManagerInterface $manager): Response
     {
         if($poudre == null)
         {
