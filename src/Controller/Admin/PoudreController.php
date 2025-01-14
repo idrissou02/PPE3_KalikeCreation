@@ -40,9 +40,17 @@ class PoudreController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/poudre/ajout/modif{id}', name: 'admin_poudre_modif', methods:"GET, POST")]
-    public function modifPoudre( Poudre $poudre, Request $request, EntityManagerInterface $manager): Response
+    #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:["GET","POST"])]
+    #[Route('/admin/poudre/ajout/modif{id}', name: 'admin_poudre_modif', methods:["GET","POST"])]
+    public function ajoutModifPoudre( Poudre $poudre=null, Request $request, EntityManagerInterface $manager): Response
     {
+        if($poudre == null)
+        {
+            $poudre=new Poudre();
+            $mode="ajouté";
+        }else{
+            $mode="modifié";
+        }
         $form=$this->createForm(PoudreType::class, $poudre);
         $form->handleRequest($request);
 
@@ -50,10 +58,10 @@ class PoudreController extends AbstractController
         {
             $manager->persist($poudre);
             $manager->flush();
-            $this->addFlash('success', 'La poudre a bien été modifiée');
+            $this->addFlash("success", "La poudre a bien été $mode");
             return$this->redirectToRoute('admin_poudre');
         }
-        return $this->render('admin/poudre/formModifPoudre.html.twig', [
+        return $this->render('admin/poudre/formAjoutModifPoudre.html.twig', [
             'formPoudre' => $form->createView()
         ]);
     }
