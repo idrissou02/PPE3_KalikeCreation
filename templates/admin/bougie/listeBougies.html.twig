@@ -33,13 +33,28 @@
                 <a href="{{ path('admin_bougie_modif',{'id': LaBougie.id}) }}" class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
             </td>
             <td>
-                <a type="button" class="btn btn-outline-danger" data-toggle="modalSimple" data-target="#exampleModal">  <i class="fas fa-trash"></i>
+                <a class="btn btn-outline-danger"
+                 data-toggle="modal" 
+                 data-target="#modalSimple"  
+                 data-titre="Suppression de la bougie"
+                 data-message="Voulez-vous vraiment supprimer la bougie {{LaBougie.nomB}} ?"
+                 data-libelleBouton = "Supprimer la bougie "
+                 data-lien = "{{ path('admin_bougie_suppr',{'id': LaBougie.id}) }}" 
+                 ><i class="fas fa-trash"></i></a>
             </td>
         </tr>
-      {% endfor %}
+      {% endfor %} 
   </tbody>
 </table>
 
 </div>
+{% endblock %}
+{% block javascripts %}
+
+  {% include "include/_modale.html.twig" %}
+
+
+
+
 <br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

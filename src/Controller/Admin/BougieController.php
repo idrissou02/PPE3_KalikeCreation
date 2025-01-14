@@ -23,28 +23,17 @@ class BougieController extends AbstractController
     }
 
     #[Route('/admin/bougie/ajout', name: 'admin_bougie_ajout', methods:["GET","POST"])]
-    public function ajoutBougie( Request $request, EntityManagerInterface $manager): Response
-    {
-        $Bougie=new Bougie();   
-        $form=$this->createForm(BougieType::class, $Bougie);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid() )
-        {
-            $manager->persist($Bougie);
-            $manager->flush();
-             $this->addFlash("success",'La bougie a été ajoutée');
-            return$this->redirectToRoute('admin_Bougie');
-        }
-        return $this->render('admin/Bougie/formAjoutBougie.html.twig', [
-            'formBougie' => $form->createView()
-        ]);
-    }
-
     #[Route('/admin/bougie/modif/{id}', name: 'admin_bougie_modif', methods:["GET","POST"])]
-    public function modifBougie(Bougie $bougie, Request $request, EntityManagerInterface $manager): Response
+    public function ajoutModifBougie(Bougie $bougie=null ,Request $request, EntityManagerInterface $manager): Response
     {
-           
+        if($bougie == null)
+        {
+            $bougie=new Bougie();
+            $mode = 'ajoutée';
+        }else {
+            $mode = "modifiée";
+        }
+               
         $form=$this->createForm(BougieType::class, $bougie);
         $form->handleRequest($request);
 
@@ -52,11 +41,22 @@ class BougieController extends AbstractController
         {
             $manager->persist($bougie);
             $manager->flush();
-             $this->addFlash("success",'La bougie a été modifiée');
+             $this->addFlash("success","La bougie a été $mode");
             return$this->redirectToRoute('admin_Bougie');
         }
-        return $this->render('admin/Bougie/formModifBougie.html.twig', [
+        return $this->render('admin/Bougie/formAjoutModifBougie.html.twig', [
             'formBougie' => $form->createView()
         ]);
     }
+
+    #[Route('/admin/bougie/suppr/{id}', name: 'admin_bougie_suppr', methods: ["GET"])]
+    public function supprBougie(Bougie $bougie, EntityManagerInterface $manager)
+    {
+            $manager->remove($bougie);
+            $manager->flush(); 
+            $this->addFlash("success","La bougie a été supprimée");
+            return$this->redirectToRoute('admin_Bougie');
+
+    }
+
 }
