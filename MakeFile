@@ -15,9 +15,6 @@ doctrine: #ça lance les fixtures
 .PHONY: doctrine
 
 
-
-
-
 addGit: #ça envoie un push tout seul
 	git add --all
 	git commit -m ""

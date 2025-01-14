@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion Bougie Parmuée{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Ajout de Bougies parfumée</h1>
+{{form_start(formBougie)}}
+
+
+{{form_row(formBougie.image)}}
+{{form_row(formBougie.nomB)}}
+<div class="row">
+    <div class="col">{{form_row(formBougie.prix)}}</div>
+    <div class="col">{{form_row(formBougie.taille)}}</div>
+    <div class="col">{{form_row(formBougie.ddv)}}</div>
+</div>
+
+<div class="row mt-4">
+    <div class="col">{{form_row(formBougie.poid)}}</div>
+    <div class="col">{{form_row(formBougie.materiaux)}}</div>
+    <div class="col">{{form_row(formBougie.couleur)}}</div>
+</div>
+
+<div class="row">
+    <div class="col"><input type="submit", class="btn valider btn-outline-success btn-block form-control" value="valdier"></div>
+    <div class="col"><a href="{{path('admin_Bougie')}}" class="btn btn-outline-warning btn-block form-control">Annuler</a></div>
+</div>
+
+
+
+</div>
+
+
+
+
+{{form_end(formBougie)}}
+{% endblock %}

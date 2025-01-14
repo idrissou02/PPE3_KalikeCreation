@@ -13,15 +13,16 @@
     background-color: #c74ae0;
 }
 
-.btn {
-    background-color: transparent;
-}
+
 
 .supermini {
     max-width: 50px;
     height: auto;
 }
 
+.valider {
+    background-color: #2f0bd3;
+}
 /* le css de FichePoudre.html.twig */
 .col-md-6.mb-4 {
     margin-right: 10px; 
