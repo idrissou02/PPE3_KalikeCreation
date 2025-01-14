@@ -32,7 +32,7 @@
         <p>{{ LaPoudre.description|slice(0,200)|raw}}...</p>
         </td>
         <td class="col-2">
-        <a href="" class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
+        <a href=" {{path('admin_poudre_modif', {'id': LaPoudre.id })}} " class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
         </td>
         <td><a type="button" class="btn btn-outline-danger" data-toggle="modalSimple" data-target="#exampleModal"><i class="fa-solid fa-trash"></i></a></td>
         </tr>
