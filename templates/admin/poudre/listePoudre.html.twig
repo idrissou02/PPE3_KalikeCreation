@@ -46,9 +46,11 @@
     {% endfor %}
   </tbody>
 </table>
-<div class="navigation mx-auto">
-  {{ knp_pagination_render(lesPoudres) }}
-</div>
+{% if lesPoudres is same as('Knp\\Bundle\\PaginatorBundle\\Pagination\\SlidingPaginationInterface') %}
+  <div class="navigation mx-auto">
+    {{ knp_pagination_render(lesPoudres) }}
+  </div>
+{% endif %}
 <br><br><br><br><br><br><br><br><br><br><br>
-{{ include "include/_modale.html.twig"}}
+{{ include('include/_modale.html.twig') }}
 {% endblock %}
