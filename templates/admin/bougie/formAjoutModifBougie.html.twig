@@ -3,7 +3,13 @@
 {% block title %}Gestion Bougie Parmuée{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Ajout de Bougies parfumée</h1>
+<h1 class="pt-2 text-center"> 
+{% if (app.request.attributes.get('_route')=="admin_bougie_ajout") %}
+    Ajout
+{% else %}
+    Modification
+{% endif %}
+de Bougies parfumée</h1>
 {{form_start(formBougie)}}
 
 
