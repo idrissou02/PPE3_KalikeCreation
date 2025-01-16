@@ -21,23 +21,39 @@ class PoudreController extends AbstractController
             'lesPoudres' => $poudres
         ]);
     }
-
-    #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:"GET")]
-    public function ajoutPoudre( Request $request, EntityManagerInterface $manager): Response
+    
+    #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:["GET","POST"])]
+    #[Route('/admin/poudre/ajout/modif{id}', name: 'admin_poudre_modif', methods:["GET","POST"])]
+    public function ajoutPoudre( Poudre $poudre=null, Request $request, EntityManagerInterface $manager): Response
     {
-        $poudre=new Poudre();
+        if($poudre == null)
+        {
+            $poudre=new Poudre();
+            $mode="ajouté";
+        }else{
+            $mode="modifié";
+        }
         $form=$this->createForm(PoudreType::class, $poudre);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid() )
         {
             $manager->persist($poudre);
             $manager->flush();
+            $this->addFlash("success", "La poudre a bien été $mode");
             return$this->redirectToRoute('admin_poudre');
         }
-        return $this->render('admin/poudre/formAjoutPoudre.html.twig', [
+        return $this->render('admin/poudre/formAjoutModifPoudre.html.twig', [
             'formPoudre' => $form->createView()
         ]);
     }
 
-    
+    #[Route('/admin/poudre/ajout/suppression{id}', name: 'admin_poudre_suppression', methods:"GET")]
+    public function suppressionPoudre( Poudre $poudre=null, EntityManagerInterface $manager): Response
+    {
+            $manager->remove($poudre);
+            $manager->flush();
+            $this->addFlash("success", "La poudre a bien été suppression");
+            return$this->redirectToRoute('admin_poudre');
+    }
 }

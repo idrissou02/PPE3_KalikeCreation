@@ -14,6 +14,13 @@
 }
 
 
+.btn-outline-success{
+    background-color: #027e02;
+}
+
+.btn-outline-danger{
+    background-color: #670101;
+}
 
 .supermini {
     max-width: 50px;
