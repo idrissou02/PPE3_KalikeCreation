@@ -3,23 +3,31 @@
 {% block title %}Liste des labougies Décoratifs{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Nos bougies </h1>
-<hr>
-<div class="row pt-2">
-    {% for LaBougie in LesBougies%}
-        <div class="col-sm-12 col-md-4 col-lg-4 col-lx-3">
-            <div class="card mb-3">
-                    <h3 class="card-header"> <a href="{{path('ficheBougie',{'id': LaBougie.id})}}">  {{LaBougie.nomB}} </a></h3>
+  <div class="container">
+    <h1 class="text-center mb-5">Liste des labougies Décoratifs</h1>
+
+    {% if LesBougies is not empty %}
+      <div class="row">
+        {% for labougie in LesBougies %}
+          <div class="col-md-4 mb-4">
+            <a href="{{ path('ficheBougie', {'id': labougie.id }) }}" class="card-link">
+              <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="{{ labougie.image }}" class="card-img-top" alt="Image de {{ labougie.nomB }}">
+                </div>
                     <div class="card-body">
                     <h5 class="card-title">{{ labougie.nomB }}</h5>
                     <p class="card-text"><strong>Prix :</strong> {{ labougie.prix }} €</p>
                     </div>
-            </div>      
-        </div>
-    {% endfor %}
-
-</div>
-<br><br><br><br><br><br><br><br><br><br><br>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>Aucun bougie trouvé.</p>
+    {% endif %}
+  </div>
 {% endblock %}
 
 {% block stylesheets %}

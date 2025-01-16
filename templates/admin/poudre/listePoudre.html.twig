@@ -38,7 +38,13 @@
           </a>
         </td>
         <td>
-          <a type="button" class="btn btn-outline-danger" data-toggle="modalSimple" data-target="#exampleModal">
+          <a class="btn btn-outline-danger" 
+             data-toggle="modal" 
+             data-target="#modalSimple"
+             data-titre="Suppression de la poudre"
+             data-message="Voulez-vous vraiment supprimer la poudre {{ LaPoudre.nom }} ?"
+             data-libelleBouton="Supprimer la poudre"
+             data-lien="{{ path('admin_poudre_suppression', {'id': LaPoudre.id}) }}">
             <i class="fa-solid fa-trash"></i>
           </a>
         </td>
@@ -49,9 +55,10 @@
 {% if lesPoudres is same as('Knp\\Bundle\\PaginatorBundle\\Pagination\\SlidingPaginationInterface') %}
   <div class="navigation mx-auto">
     {{ knp_pagination_render(lesPoudres) }}
-  </div>
+  </div> 
 {% endif %}
-<br><br><br><br><br><br><br><br><br><br><br>
-{{ include('include/_modale.html.twig') }}
 {% endblock %}
 
+{% block javascripts %}
+  {{ include('include/_modale.html.twig') }}
+{% endblock %}
