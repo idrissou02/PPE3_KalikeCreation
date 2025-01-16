@@ -3,7 +3,14 @@
 {% block title %}Gestion Bougie{% endblock %}
 
 {% block body %}
-<a href=" {{ path("admin_bougie_ajout")}} " class="btn mt-4 btn-sucess">Ajouter une bougie</a>
+{% if lesBougies is not empty %}
+{{ form_start(FiltreBougie) }}
+  {{ form_row(FiltreBougie.nom) }}
+  <button type="submit" class="btn mt-4 btn-outline-warning"> Rechercher </button>
+ {{ form_end(FiltreBougie) }} 
+
+<a href=" {{ path("admin_bougie_ajout")}} " class="mt-4 btn btn-outline-primary">Ajouter une bougie</a>
+
 <hr>
 <table class="table table-hover">
   <thead>
@@ -48,6 +55,9 @@
       
   </tbody>
 </table>
+    {% else %}
+      <p>Aucun objet décoratif trouvé.</p>
+    {% endif %}
 
 </div>
 {% endblock %}

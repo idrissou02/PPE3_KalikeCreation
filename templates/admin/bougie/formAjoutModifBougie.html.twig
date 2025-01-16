@@ -1,43 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion Bougie Parmuée{% endblock %}
+{% block title %}Gestion Bougie Parfumée{% endblock %}
 
 {% block body %}
 <h1 class="pt-2 text-center"> 
-{% if (app.request.attributes.get('_route')=="admin_bougie_ajout") %}
-    Ajout
-{% else %}
-    Modification
-{% endif %}
-de Bougies parfumée</h1>
-{{form_start(formBougie)}}
+    {% if app.request.attributes.get('_route') == "admin_bougie_ajout" %}
+        Ajout
+    {% else %}
+        Modification
+    {% endif %}
+    de Bougies parfumée
+</h1>
 
+{{ form_start(formBougie) }}
 
-{{form_row(formBougie.image)}}
-{{form_row(formBougie.nomB)}}
+{{ form_row(formBougie.image) }}
+{{ form_row(formBougie.nomB) }}
+
 <div class="row">
-    <div class="col">{{form_row(formBougie.prix)}}</div>
-    <div class="col">{{form_row(formBougie.taille)}}</div>
-    <div class="col">{{form_row(formBougie.ddv)}}</div>
+    <div class="col">{{ form_row(formBougie.prix) }}</div>
+    <div class="col">{{ form_row(formBougie.taille) }}</div>
+    <div class="col">{{ form_row(formBougie.ddv) }}</div>
 </div>
 
 <div class="row mt-4">
-    <div class="col">{{form_row(formBougie.poid)}}</div>
-    <div class="col">{{form_row(formBougie.materiaux)}}</div>
-    <div class="col">{{form_row(formBougie.couleur)}}</div>
+    <div class="col">{{ form_row(formBougie.poid) }}</div>
+    <div class="col">{{ form_row(formBougie.materiaux) }}</div>
+    <div class="col">{{ form_row(formBougie.couleur) }}</div>
 </div>
 
 <div class="row">
-    <div class="col"><input type="submit", class="btn valider btn-outline-success btn-block form-control" value="valdier"></div>
-    <div class="col"><a href="{{path('admin_Bougie')}}" class="btn btn-outline-warning btn-block form-control">Annuler</a></div>
+    <div class="col">
+        <input type="submit" class="btn valider btn-outline-success btn-block form-control" value="valider">
+    </div>
+    <div class="col">
+        <a href="{{ path('admin_Bougie') }}" class="btn btn-outline-warning btn-block form-control">Annuler</a>
+    </div>
 </div>
 
-
-
-</div>
-
-
-
-
-{{form_end(formBougie)}}
+{{ form_end(formBougie) }}
 {% endblock %}

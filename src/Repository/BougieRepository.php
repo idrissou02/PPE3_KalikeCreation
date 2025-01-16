@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Bougie;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Bougie>
@@ -24,14 +25,19 @@ class BougieRepository extends ServiceEntityRepository
     /**
     * @return Bougie[] Returns an array of Bougie objects
     */
-    public function ListeBougies(): array
+    public function ListeBougies($nom=null): array
     {
-        return $this->createQueryBuilder('b')
+        $query = $this->createQueryBuilder('b')
         ->select('b')
-        ->orderBy('b.NomB', 'ASC')
-        ->getQuery()
-        ->getResult()
-    ;}
+        ->orderBy('b.NomB', 'ASC');
+        if($nom != null)
+        {
+            $query->andWhere('b.NomB LIKE :nom')
+            ->setParameter('nom', "%$nom%");
+        }
+        
+        return $query->getQuery()->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Bougie
 //    {
