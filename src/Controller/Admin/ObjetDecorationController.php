@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ObjetDecorationController extends AbstractController
 {
@@ -24,7 +27,7 @@ class ObjetDecorationController extends AbstractController
     
     #[Route('/admin/objectdecoration/ajout', name: 'admin_objectdecoration_ajout', methods:["GET","POST"])]
     #[Route('/admin/objectdecoration/ajout/modif{id}', name: 'admin_objectdecoration_modif', methods:["GET","POST"])]
-    public function ajoutObjectDecoration(ObjetDecoration $objectDecoration = null, Request $request, EntityManagerInterface $manager): Response
+    public function ajoutObjectDecoration(ObjetDecoration $objectDecoration = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
         if ($objectDecoration == null) {
             $objectDecoration = new ObjetDecoration();
@@ -36,6 +39,28 @@ class ObjetDecorationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // handle exception if something happens during file upload
+                }
+
+                // updates the 'imageFilename' property to store the image file name
+                // instead of its contents
+                $objectDecoration->setImageFilename($newFilename);
+            }
+
             $manager->persist($objectDecoration);
             $manager->flush();
             $this->addFlash("success", "L'objet de décoration a bien été $mode");

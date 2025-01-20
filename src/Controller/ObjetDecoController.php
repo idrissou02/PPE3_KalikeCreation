@@ -96,4 +96,6 @@ class ObjetDecoController extends AbstractController
 
         return $this->redirectToRoute('app_liste_objetdecoration');
     }
+
+    
 }
