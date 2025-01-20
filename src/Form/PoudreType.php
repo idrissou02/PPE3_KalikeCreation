@@ -18,6 +18,9 @@ class PoudreType extends AbstractType
     {
         $builder
             ->add('image',UrlType::class,[
+                'label' => 'Image (JPG, PNG file)',
+                'required' => false,
+                'mapped' => false,
                 'attr'=>[
                     "placeholder"=>"saisier l'URL d'une image"
                 ]

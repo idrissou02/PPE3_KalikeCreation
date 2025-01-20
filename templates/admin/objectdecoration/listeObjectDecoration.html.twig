@@ -19,7 +19,11 @@
     {% for objet in lesObjectDecorations %}
       <tr>
         <td class="col-2">
-          <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ objet.image }}" alt="Card image">
+          {% if objet.imageFilename %}
+            <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ objet.imageFilename) }}" alt="{{ objet.nom }}">
+          {% else %}
+            Pas d'image
+          {% endif %}
         </td>
         <td class="col-2">{{ objet.nom }}</td>
         <td class="col-7">

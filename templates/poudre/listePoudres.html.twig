@@ -13,7 +13,7 @@
             <a href="{{ path('FichePoudre', {'id': LaPoudre.id }) }}" class="card-link">
               <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="{{ LaPoudre.image }}" class="card-img-top" alt="Image de {{ LaPoudre.nom }}">
+                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ poudre.imageFilename) }}" alt="{{ poudre.nom }}">
                 </div>
                     <div class="card-body">
                     <h5 class="card-title">{{ LaPoudre.nom }}</h5>
@@ -26,7 +26,7 @@
         {% endfor %}
       </div>
     {% else %}
-      <p>Aucun bougie trouvé.</p>
+      <p>Aucun poudre trouvé.</p>
     {% endif %}
   </div>
 {% endblock %}
