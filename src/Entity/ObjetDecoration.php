@@ -31,6 +31,9 @@ class ObjetDecoration
     #[ORM\Column(length: 255)]
     private ?string $couleur = null;
 
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private $imageFilename;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class ObjetDecoration
     public function setCouleur(string $couleur): static
     {
         $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): self
+    {
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }

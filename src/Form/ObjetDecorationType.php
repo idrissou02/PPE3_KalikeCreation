@@ -16,7 +16,7 @@ class ObjetDecorationType extends AbstractType
             ->add('image', FileType::class, [
                 'label' => 'Image (JPG, PNG file)',
                 'required' => false,
-                'mapped' => false,
+                'mapped' => false, // This ensures the file is not mapped to the entity property
             ])
             ->add('nom')
             ->add('prix')

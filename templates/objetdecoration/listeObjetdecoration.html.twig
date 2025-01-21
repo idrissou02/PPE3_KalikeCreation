@@ -13,13 +13,17 @@
             <a href="{{ path('app_fiche_objetdecoration', {'id': objet.id }) }}" class="card-link">
               <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="{{ objet.image }}" class="card-img-top" alt="Image de {{ objet.nom }}">
+                    {% if objet.imageFilename %}
+                        <img src="{{ asset('uploads/images/' ~ objet.imageFilename) }}" class="card-img-top" alt="Image de {{ objet.nom }}">
+                    {% else %}
+                        <img src="{{ asset('path/to/default/image.jpg') }}" class="card-img-top" alt="Image de {{ objet.nom }}">
+                    {% endif %}
                 </div>
-                    <div class="card-body">
+                <div class="card-body">
                     <h5 class="card-title">{{ objet.nom }}</h5>
                     <p class="card-text">{{ objet.description }}</p>
                     <p class="card-text"><strong>Prix :</strong> {{ objet.prix }} €</p>
-                    </div>
+                </div>
               </div>
             </a>
           </div>
