@@ -1,29 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail de l'Objet Décoratif{% endblock %}
+{% block title %}Fiche de l'Objet Décoratif{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Fiche des objects de décoration </h1>
 <div class="container">
-  <div class="mt-4">
-    <a href="{{ path('poudre') }}" class="mb-4 btn btn-secondary">Retour à la liste</a>
-  </div>
+  <h1 class="pt-2 text-center">{{ objetDeco.nom }}</h1>
 
   {% if objetDeco %}
     <div class="row">
-      <div class="col-md-6 mb-4">
-        <img src="{{ objetDeco.image }}" class="img-fluid rounded" alt="Image de {{ objetDeco.nom }}">
+      <div class="col-md-6">
+        {% if objetDeco.imageFilename %}
+          <img src="{{ asset('uploads/images/' ~ objetDeco.imageFilename) }}" class="img-fluid" alt="Image de {{ objetDeco.nom }}">
+        {% else %}
+          <img src="{{ asset('path/to/default/image.jpg') }}" class="img-fluid" alt="Image de {{ objetDeco.nom }}">
+        {% endif %}
       </div>
-      
-      <div class="col-md-6 mb-4">
+      <div class="col-md-6">
         <div class="card">
-          <div class="card-header">
-            <h3><u>{{ objetDeco.nom }}</u></h3>
-          </div>
           <div class="card-body">
-            <h4>Prix : {{ objetDeco.prix }} €</h4>
-            <h4 class="card-title"><strong>Description</strong></h4>
-            <p class="card-text">{{ objetDeco.description }}</p>
+            <h5 class="card-title">{{ objetDeco.nom }}</h5>
+            <p class="card-text"><strong>Prix :</strong> {{ objetDeco.prix }} €</p>
+            <p class="card-text"><strong>Matériaux :</strong> {{ objetDeco.materiaux }}</p>
+            <p class="card-text"><strong>Couleur :</strong> {{ objetDeco.couleur }}</p>
+            <p class="card-text"><strong>Description :</strong> {{ objetDeco.description }}</p>
           </div>
         </div>
       </div>

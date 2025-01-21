@@ -4,14 +4,18 @@ namespace App\Controller\Admin;
 
 use App\Entity\Bougie;
 use App\Form\BougieType;
-use App\Form\FiltreBougieType;
 use App\Model\FiltreBougie;
+use App\Form\FiltreBougieType;
 use App\Repository\BougieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class BougieController extends AbstractController
 {
@@ -33,22 +37,41 @@ class BougieController extends AbstractController
 
     #[Route('/admin/bougie/ajout', name: 'admin_bougie_ajout', methods:["GET","POST"])]
     #[Route('/admin/bougie/modif/{id}', name: 'admin_bougie_modif', methods:["GET","POST"])]
-    public function ajoutModifBougie(Bougie $bougie=null ,Request $request, EntityManagerInterface $manager): Response
+    public function ajoutBougie(Bougie $Bougie = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
-        if($bougie == null)
-        {
-            $bougie=new Bougie();
-            $mode = 'ajoutée';
-        }else {
-            $mode = "modifiée";
+        if ($Bougie == null) {
+            $Bougie = new Bougie();
+            $mode = "ajouté";
+        } else {
+            $mode = "modifié";
         }
-               
-        $form=$this->createForm(BougieType::class, $bougie);
+        $form = $this->createForm(BougieType::class, $Bougie);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid() )
-        {
-            $manager->persist($bougie);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // handle exception if something happens during file upload
+                }
+
+                // updates the 'imageFilename' property to store the image file name
+                // instead of its contents
+                $Bougie->setImageFilename($newFilename);
+            }
+
+            $manager->persist($Bougie);
             $manager->flush();
              $this->addFlash("success","La bougie a été $mode");
             return$this->redirectToRoute('admin_Bougie');

@@ -25,7 +25,7 @@
       {% for LaBougie in lesBougies %}
         {# {% set variable_name = expression %} #}
         <tr class="pt-2" style="border-bottom: 1px solid #c74ae0; border-top: 1px solid #c74ae0">
-        <td class="col-2"><img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{asset("image/bougies/" ~ LaBougie.image|replace({'http://': '', 'https://': ''})) }}" alt"Card image"></img></td>
+        <td class="col-2"><img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{asset("uploads/images/" ~ LaBougie.imageFileName|replace({'http://': '', 'https://': ''})) }}" alt"Card image"></img></td>
         <td class="col-2">{{LaBougie.nomB}}</td>
         <td class="col-7">
         <p class="d-flex flex-row">

@@ -22,15 +22,27 @@ class ObjetDecorationRepository extends ServiceEntityRepository
     }
 
    /**
-     * @return ObjetDecoration[] Returns an array of ObjetDecoration objects
-     */
-    public function findAll(): array
+    * @return ObjetDecoration[] Returns an array of ObjetDecoration objects
+    */
+   public function listeObjetsDecoration(): array
+   {
+       return $this->createQueryBuilder('obj')
+            ->select('obj')
+            ->orderBy('obj.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+       ;
+   }
+
+   /**
+    * @return Query Returns a Query object for ObjetDecoration
+    */
+    public function listeObjetsDecorationComplete(): Query
     {
-        return $this->createQueryBuilder('o')  
-            ->select('o')  
-            ->orderBy('o.nom', 'ASC')  
-            ->getQuery()  
-            ->getResult(); 
+        return $this->createQueryBuilder('obj')
+             ->select('obj')
+             ->orderBy('obj.id', 'ASC')
+             ->getQuery();
     }
 
 //    public function findOneBySomeField($value): ?ObjetDecoration
