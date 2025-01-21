@@ -20,7 +20,7 @@ class Bougie
     #[ORM\Column(length: 255)]
     private ?string $materiaux = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
     private ?string $prix = null;
 
     #[ORM\Column(length: 255)]
@@ -37,6 +37,15 @@ class Bougie
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTimeImmutable();
+        $this->setImage("7da2fbda8626e815d79c37dbec8697f4.jpg");
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +144,18 @@ class Bougie
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

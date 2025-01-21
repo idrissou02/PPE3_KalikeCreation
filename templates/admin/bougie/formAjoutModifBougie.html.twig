@@ -12,22 +12,34 @@
     de Bougies parfumée
 </h1>
 
-{{ form_start(formBougie) }}
+{{ form_start(formBougie,{'attr':{'novalide':'novalidate'}})}}
 
-{{ form_row(formBougie.image) }}
-{{ form_row(formBougie.nomB) }}
 
 <div class="row">
+    <div class="col-8">{{ form_row(formBougie.nomB) }}</div>
     <div class="col">{{ form_row(formBougie.prix) }}</div>
     <div class="col">{{ form_row(formBougie.taille) }}</div>
     <div class="col">{{ form_row(formBougie.ddv) }}</div>
 </div>
 
-<div class="row mt-4">
-    <div class="col">{{ form_row(formBougie.poid) }}</div>
+
+<div class="row">
+    <div class="col-4">{{form_row(formBougie.poid) }}</div>
     <div class="col">{{ form_row(formBougie.materiaux) }}</div>
     <div class="col">{{ form_row(formBougie.couleur) }}</div>
 </div>
+<div class="row">
+    <div class="col-4">
+        <img src="{{ asset('image/bougies/' ~ formBougie.image.vars.value|replace({'http://': '', 'https://': ''})) }}" alt="" class="rounded mx-auto d-block img-thumbmail" style="height: auto; width: 300px; display: block;">
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col">
+        {{ form_row(formBougie.imageFile) }}
+    </div>
+</div>
+
 
 <div class="row">
     <div class="col">

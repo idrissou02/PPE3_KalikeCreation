@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Bougie;
 use Doctrine\ORM\Query;
+use App\Model\FiltreBougie;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -25,15 +26,15 @@ class BougieRepository extends ServiceEntityRepository
     /**
     * @return Bougie[] Returns an array of Bougie objects
     */
-    public function ListeBougies($nom=null): array
+    public function ListeBougies(FiltreBougie $filtre=null): array
     {
         $query = $this->createQueryBuilder('b')
         ->select('b')
         ->orderBy('b.NomB', 'ASC');
-        if($nom != null)
+        if(!empty($filtre->nom))
         {
-            $query->andWhere('b.NomB LIKE :nom')
-            ->setParameter('nom', "%$nom%");
+            $query->andWhere('b.NomB LIKE :filtre')
+            ->setParameter('filtre', "%$filtre->nom%");
         }
         
         return $query->getQuery()->getResult();

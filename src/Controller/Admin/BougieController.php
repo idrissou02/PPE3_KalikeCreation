@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Bougie;
 use App\Form\BougieType;
 use App\Form\FiltreBougieType;
+use App\Model\FiltreBougie;
 use App\Repository\BougieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,14 +18,12 @@ class BougieController extends AbstractController
     #[Route('/admin/bougie', name: 'admin_Bougie',methods:["GET","POST"])]
     public function listeBougie(BougieRepository $repo, Request $request): Response
     {
-        $formFiltreBougie = $this->createForm(FiltreBougieType::class);
+        $filtre = new FiltreBougie();
+        $formFiltreBougie = $this->createForm(FiltreBougieType::class, $filtre);
         $formFiltreBougie->handleRequest($request);
-        if ($formFiltreBougie->isSubmitted() && $formFiltreBougie->isValid()) {
-            $nom = $formFiltreBougie->get('nom')->getData();
-            $bougies = $repo->ListeBougies($nom);
-        } else {
-            $bougies = $repo->ListeBougies(); 
-        }   
+        $bougies = $repo->ListeBougies($filtre);
+    
+           
 
         return $this->render('admin/bougie/listeBougies.html.twig', [
             'lesBougies' => $bougies,
