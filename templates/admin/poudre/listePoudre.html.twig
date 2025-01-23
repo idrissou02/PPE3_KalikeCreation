@@ -19,7 +19,8 @@
     {% for LaPoudre in lesPoudres %}
       <tr>
         <td class="col-2">
-          <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ LaPoudre.image }}" alt="Card image">
+        {# afficher les poudres #}
+          <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ LaPoudre.imageFilename) }}" alt="{{ LaPoudre.nom }}">
         </td>
         <td class="col-2">{{ LaPoudre.nom }}</td>
         <td class="col-7">

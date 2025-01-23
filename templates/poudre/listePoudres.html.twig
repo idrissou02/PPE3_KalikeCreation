@@ -13,7 +13,7 @@
             <a href="{{ path('FichePoudre', {'id': LaPoudre.id }) }}" class="card-link">
               <div class="card">
                 <div class="card-img-wrapper">
-                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ poudre.imageFilename) }}" alt="{{ poudre.nom }}">
+                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ LaPoudre.imageFilename) }}" alt="{{ LaPoudre.nom }}">
                 </div>
                     <div class="card-body">
                     <h5 class="card-title">{{ LaPoudre.nom }}</h5>
