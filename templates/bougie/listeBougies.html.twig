@@ -13,7 +13,7 @@
             <a href="{{ path('ficheBougie', {'id': labougie.id }) }}" class="card-link">
               <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="{{ labougie.image }}" class="card-img-top" alt="Image de {{ labougie.nomB }}">
+                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{asset("uploads/images/" ~ labougie.imageFileName|replace({'http://': '', 'https://': ''})) }}" alt"Card image"></img>
                 </div>
                     <div class="card-body">
                     <h5 class="card-title">{{ labougie.nomB }}</h5>
