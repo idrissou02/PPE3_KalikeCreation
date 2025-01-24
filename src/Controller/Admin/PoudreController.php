@@ -24,7 +24,7 @@ class PoudreController extends AbstractController
             'lesPoudres' => $poudres
         ]);
     }
-    
+    // gérer le téléchargement et le stockage des fichiers
     #[Route('/admin/poudre/ajout', name: 'admin_poudre_ajout', methods:["GET","POST"])]
     #[Route('/admin/poudre/ajout/modif{id}', name: 'admin_poudre_modif', methods:["GET","POST"])]
     public function ajoutPoudre(Poudre $poudre = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response

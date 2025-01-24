@@ -11,19 +11,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PoudreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('image',UrlType::class,[
+        // champ de type FileType pour permettre le téléchargement de fichiers
+            ->add('image', FileType::class, [
                 'label' => 'Image (JPG, PNG file)',
                 'required' => false,
-                'mapped' => false,
-                'attr'=>[
-                    "placeholder"=>"saisier l'URL d'une image"
-                ]
+                'mapped' => false, 
             ])
             ->add('nom', TextType::class,[
                 'attr'=>[
@@ -58,6 +57,11 @@ class PoudreType extends AbstractType
             ->add('description', TextareaType::class,[
                 'attr'=>[
                     "placeholder"=>"saisier la déscription"
+                ]
+            ])
+            ->add('poids', IntegerType::class,[
+                'attr'=>[
+                    "placeholder"=>"saisier le poids"
                 ]
             ]);
             // ->add('valdier', SubmitType::class);

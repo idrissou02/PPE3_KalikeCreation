@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Poudres Parmées{% endblock %}
+{% block title %}Liste des Poudres Parfumées{% endblock %}
 
 {% block body %}
 <h1 class="pt-2 text-center">Fiche de la Poudre </h1>
@@ -13,7 +13,11 @@
   <div class="row">
     <!-- Image de la poudre -->
     <div class="col-md-6 mb-4">
-      <img src="{{ LaPoudre.image }}" class="img-fluid rounded" alt="Image de {{ LaPoudre.nom }}">
+      {% if LaPoudre.imageFilename %}
+        <img src="{{ asset('uploads/images/' ~ LaPoudre.imageFilename) }}" class="img-fluid rounded" alt="Image de {{ LaPoudre.nom }}">
+      {% else %}
+        <p>Pas d'image disponible</p>
+      {% endif %}
     </div>
     
     <div class="col-md-6 mb-4">
