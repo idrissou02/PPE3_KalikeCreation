@@ -24,7 +24,7 @@ class BougieType extends AbstractType
             'required' => false,
             'mapped' => false, // This ensures the file is not mapped to the entity property
         ])
-            ->add('nomB', TextType::class,[
+            ->add('nom', TextType::class,[
                 'attr'=>[
                     "placeholder"=>"saisier le nom de la poudre parfumée"
                 ]

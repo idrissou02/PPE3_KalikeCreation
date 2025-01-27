@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Bougie;
+use App\Model\FiltreBougie;
 use App\Form\FiltreBougieType;
 use App\Repository\BougieRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,12 +13,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BougieController extends AbstractController
 {
-    #[Route('/bougie', name: 'bougie', methods: 'GET')]
-    public function listeBougie(BougieRepository $repo): Response
+    #[Route('/bougies', name: 'Bougies')]
+    public function listeBougies(Request $request, BougieRepository $bougieRepository): Response
     {
-         
-        $bougies=$repo->ListeBougies();
+        $formFiltreBougie = $this->createForm(FiltreBougieType::class);
+        $formFiltreBougie->handleRequest($request);
+
+        $bougies = [];
+
+        if ($formFiltreBougie->isSubmitted() && $formFiltreBougie->isValid()) {
+            $searchTerm = $formFiltreBougie->get('nom')->getData();
+
+            if (strlen($searchTerm) >= 2) {
+                $bougies = $bougieRepository->findByNom($searchTerm);
+            } else {
+                $this->addFlash('info', 'Please enter at least 2 characters for the search.');
+                $bougies = $bougieRepository->findAll();
+            }
+        } else {
+            $bougies = $bougieRepository->findAll();
+        }
+
         return $this->render('bougie/listeBougies.html.twig', [
+            'FiltreBougie' => $formFiltreBougie->createView(),
             'LesBougies' => $bougies,
         ]);
     }

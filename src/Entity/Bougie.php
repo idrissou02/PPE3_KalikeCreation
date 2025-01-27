@@ -15,7 +15,7 @@ class Bougie
     private ?int $id = null;
     
     #[ORM\Column(length: 255)]
-    private ?string $NomB = null;
+    private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
     private ?string $materiaux = null;
@@ -55,14 +55,14 @@ class Bougie
         return $this->id;
     }
 
-    public function getNomB(): ?string
+    public function nom(): ?string
     {
-        return $this->NomB;
+        return $this->nom;
     }
 
-    public function setNomB(string $NomB): static
+    public function setNomB(string $nom): static
     {
-        $this->NomB = $NomB;
+        $this->nom = $nom;
 
         return $this;
     }

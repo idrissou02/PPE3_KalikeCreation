@@ -40,13 +40,18 @@ class BougieRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-//    public function findOneBySomeField($value): ?Bougie
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * Find bougies by name using a LIKE query.
+     *
+     * @param string $searchTerm
+     * @return Bougie[]
+     */
+    public function findByNom(string $searchTerm) :array
+   {
+        return $this->createQueryBuilder('b')
+        ->where('b.nom LIKE :searchTerm')
+        ->setParameter('searchTerm', '%' . $searchTerm . '%')
+        ->getQuery()
+        ->getResult();
+   }
 }
