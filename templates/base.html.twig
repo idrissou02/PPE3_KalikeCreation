@@ -45,6 +45,7 @@
                 <a class="dropdown-item" href="#">Suspension parfumée</a>
               </div>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
               <div class="dropdown-menu">
@@ -55,6 +56,7 @@
                 <a class="dropdown-item" href="{{path ('admin_Bougie')}}">Gestion des Bougies</a>
               </div>
             </li>
+            {% endif %}
           </ul>
           {% if app.user %}
                       <li class="nav-item ">
