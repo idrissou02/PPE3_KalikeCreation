@@ -48,6 +48,15 @@ class PoudreRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByNom(string $searchTerm) :array
+   {
+        return $this->createQueryBuilder('pou')
+        ->where('pou.nom LIKE :searchTerm')
+        ->setParameter('searchTerm', '%' . $searchTerm . '%')
+        ->getQuery()
+        ->getResult();
+   }
+
 //    public function findOneBySomeField($value): ?Poudre
 //    {
 //        return $this->createQueryBuilder('p')
