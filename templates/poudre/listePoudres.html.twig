@@ -1,25 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listes des poudres parfumée{% endblock %}
+{% block title %}Liste des poudres {% endblock %}
 
 {% block body %}
   <div class="container">
-    <h1 class="pt-2 text-center">Nos poudres parfumée</h1>
+    <h1 class="text-center mb-5">Liste des poudres </h1>
+
+    <div class="mb-4">
+      {{ form_start(FiltrePoudre) }}
+      {{ form_row(FiltrePoudre.nom) }}
+      <button type="submit" class="btn mt-4 btn-outline-warning">Rechercher</button>
+      {{ form_end(FiltrePoudre) }}
+    </div>
+
+    {% for message in app.flashes('warning') %}
+      <div class="alert alert-warning">
+        {{ message }}
+      </div>
+    {% endfor %}
 
     {% if LesPoudres is not empty %}
       <div class="row">
         {% for LaPoudre in LesPoudres %}
-          <div class="col-md-4 mb-4">
-            <a href="{{ path('FichePoudre', {'id': LaPoudre.id }) }}" class="card-link">
-              <div class="card">
+          <div class="col-md-4 mb-4 d-flex align-items-stretch">
+            <a href="{{ path('FichePoudre', {'id': LaPoudre.id }) }}" class="card-link w-100">
+              <div class="card h-100">
                 <div class="card-img-wrapper">
-                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ LaPoudre.imageFilename) }}" alt="{{ LaPoudre.nom }}">
+                  <img class="card-img-top" src="{{ asset('uploads/images/' ~ LaPoudre.imageFileName|replace({'http://': '', 'https://': ''})) }}" alt="Card image">
                 </div>
-                    <div class="card-body">
-                    <h5 class="card-title">{{ LaPoudre.nom }}</h5>
-                    <p class="card-text">{{ LaPoudre.description }}</p>
-                    <p class="card-text"><strong>Prix :</strong> {{ LaPoudre.prix }} €</p>
-                    </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ LaPoudre.nom }}</h5>
+                  <p class="card-text"><strong>Prix :</strong> {{ LaPoudre.prix }} €</p>
+                </div>
               </div>
             </a>
           </div>
@@ -47,6 +59,11 @@
       max-height: 200px;
       object-fit: cover;
     }
+    .card-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+    }
     .card-img-wrapper::after {
       content: '';
       position: absolute;
@@ -58,10 +75,11 @@
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
-    .card-img-wrapper:hover::after {
+    .card:hover .card-img-wrapper::after {
       opacity: 1;
     }
     .card-body {
+      flex: 1;
       text-align: center;
     }
     .card-title {
@@ -77,6 +95,11 @@
     .card-link {
       text-decoration: none;
       color: inherit;
+    }
+    .btn-outline-warning:hover {
+      color: #fff;
+      background-color:rgb(133, 107, 31);
+      border-color:rgb(126, 115, 83);
     }
   </style>
 {% endblock %}
