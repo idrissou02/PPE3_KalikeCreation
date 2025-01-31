@@ -1,25 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Bougies{% endblock %}
+{% block title %}Liste des Bougie{% endblock %}
 
 {% block body %}
-<h1 class="pt-2 text-center">Fiche de Bougies </h1>
+<h1 class="pt-2 text-center">Fiche de la Bougie </h1>
 <div class="container">
   <!-- Bouton de retour à la liste des bougies -->
   <div class="mt-4">
-    <a href="{{ path('bougie') }}" class="mb-4 btn btn-secondary">Retour à la liste</a>
+    <a href="{{ path('Bougies') }}" class="mb-4 btn btn-outline-warning">Retour à la liste</a>
   </div>
-
-  <div class="row">
+  <table>
+  <tr>
+  <td>
     <!-- Image de la poudre -->
+    <div class="row">
     <div class="col-md-6 mb-4">
-      <img src="{{ LaBougie.image }}" class="img-fluid rounded" alt="Image de {{ LaBougie.nomB }}">
+      <img class="card-img-top" src="{{ asset('uploads/images/' ~ LaBougie.imageFileName|replace({'http://': '', 'https://': ''})) }}" alt="Card image">
     </div>
-    
-    <div class="col-md-6 mb-4">
+  </td>
+  <td>
+  <div class="">
       <div class="card">
         <div class="card-header">
-          <h3><u>{{ LaBougie.nomB }}</u></h3>
+          <h3><u>{{ LaBougie.nom }}</u></h3>
         </div>
         <div class="card-body">
           <h4>Prix : {{ LaBougie.prix }} €</h4>
@@ -44,6 +47,9 @@
         </div>
       </div>
     </div>
+  </td>
+  </tr>
+  </table>
   </div>
 </div>
   

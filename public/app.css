@@ -35,3 +35,8 @@
     margin-right: 10px; 
 }
 
+.btn-outline-warning:hover {
+    color: #fff;
+    background-color:rgb(133, 107, 31);
+    border-color:rgb(126, 115, 83);
+  }

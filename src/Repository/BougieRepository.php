@@ -30,10 +30,10 @@ class BougieRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('b')
         ->select('b')
-        ->orderBy('b.NomB', 'ASC');
+        ->orderBy('b.nom', 'ASC');
         if(!empty($filtre->nom))
         {
-            $query->andWhere('b.NomB LIKE :filtre')
+            $query->andWhere('b.nom LIKE :filtre')
             ->setParameter('filtre', "%$filtre->nom%");
         }
         

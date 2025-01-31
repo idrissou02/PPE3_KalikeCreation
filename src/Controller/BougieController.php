@@ -19,7 +19,7 @@ class BougieController extends AbstractController
         $formFiltreBougie = $this->createForm(FiltreBougieType::class);
         $formFiltreBougie->handleRequest($request);
 
-        $bougies = [];
+      
 
         if ($formFiltreBougie->isSubmitted() && $formFiltreBougie->isValid()) {
             $searchTerm = $formFiltreBougie->get('nom')->getData();
