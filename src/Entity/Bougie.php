@@ -60,7 +60,7 @@ class Bougie
         return $this->nom;
     }
 
-    public function setNomB(string $nom): static
+    public function setnom(string $nom): static
     {
         $this->nom = $nom;
 
