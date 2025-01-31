@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\DiffuseurVoiRepository;
+use App\Repository\DiffuseurVoitureRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DiffuseurVoiRepository::class)]
+#[ORM\Entity(repositoryClass: DiffuseurVoitureRepository::class)]
 class DiffuseurVoiture
 {
     #[ORM\Id]

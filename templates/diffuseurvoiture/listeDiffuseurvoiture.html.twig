@@ -4,7 +4,7 @@
 
 {% block body %}
   <div class="container">
-    <h1 class="pt-2 text-center">Fiche de Diffuseur de Voiture.</h1>
+    <h1 class="pt-2 text-center">Nos poudres parfumée</h1>
 
     {% if diffuseurs is not empty %}
       <div class="row">
@@ -13,12 +13,12 @@
             <a href="{{ path('diffuseur_voiture_Fiche', {'id': diffuseur.id }) }}" class="card-link">
               <div class="card">
                 <div class="card-img-wrapper">
-                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ diffuseur.imageFilename) }}" alt="{{ diffuseur.nom }}">
+                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ diffuseur.setImageFilename) }}" alt="{{ diffuseur.nom }}">
                 </div>
                     <div class="card-body">
                     <h5 class="card-title">{{ diffuseur.nom }}</h5>
                     <p class="card-text">{{ diffuseur.description }}</p>
-                    <p class="card-text"><strong>prix :</strong> {{ diffuseur.prix }} €</p>
+                    <p class="card-text"><strong>Prix :</strong> {{ diffuseur.prix }} €</p>
                     </div>
               </div>
             </a>
@@ -26,7 +26,7 @@
         {% endfor %}
       </div>
     {% else %}
-      <p>Aucun diffuseur de voiture trouvé.</p>
+      <p>Aucun poudre trouvé.</p>
     {% endif %}
   </div>
 {% endblock %}
