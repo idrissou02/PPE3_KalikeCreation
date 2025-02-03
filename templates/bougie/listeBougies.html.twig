@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des bougies {% endblock %}
+{% block title %}Liste des bougies{% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1 class="text-center mb-5">Liste des bougies </h1>
+<div class="container">
+    <h1 class="text-center mb-5">Liste des bougies</h1>
 
     <div class="mb-4">
       {{ form_start(FiltreBougie) }}
@@ -40,7 +40,7 @@
     {% else %}
       <p>Aucun bougie trouvé.</p>
     {% endif %}
-  </div>
+</div>
 {% endblock %}
 
 {% block stylesheets %}
