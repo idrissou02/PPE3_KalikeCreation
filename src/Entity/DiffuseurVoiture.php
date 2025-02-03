@@ -161,7 +161,7 @@ class DiffuseurVoiture
         return $this->imageFilename;
     }
 
-    public function setImageFilename(?string $imageFilename): static
+    public function setImageFilename(string $imageFilename): static
     {
         $this->imageFilename = $imageFilename;
 
