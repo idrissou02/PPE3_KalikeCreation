@@ -1,34 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Diffuseurs Voiture{% endblock %}
+{% block title %}Liste de Diffuseur de Voiture{% endblock %}
 
 {% block body %}
   <div class="container">
-    <h1 class="text-center mb-5">Liste des Diffuseurs Voiture</h1>
+    <h1 class="pt-2 text-center">Nos poudres parfumée</h1>
 
-    {% if LesDiffuseursVoiture is not empty %}
+    {% if diffuseurs is not empty %}
       <div class="row">
-        {% for diffuseur in LesDiffuseursVoiture %}
+        {% for diffuseur in diffuseurs %}
           <div class="col-md-4 mb-4">
-            <div class="card">
-              <img src="{{ diffuseur.image }}" class="card-img-top" alt="Image de {{ diffuseur.nom }}">
-              <div class="card-body">
-                <h5 class="card-title">{{ diffuseur.nom }}</h5>
-                <p class="card-text">{{ diffuseur.description }}</p>
-                <p class="card-text"><strong>Prix :</strong> {{ diffuseur.prix }} €</p>
-                <p class="card-text"><strong>Matériaux :</strong> {{ diffuseur.materiaux }}</p>
-                <p class="card-text"><strong>Couleur :</strong> {{ diffuseur.couleur }}</p>
-                <p class="card-text"><strong>Poids :</strong> {{ diffuseur.poids }} kg</p>
-                <p class="card-text"><strong>Durée de vie :</strong> {{ diffuseur.duréeDeVie|date('d-m-Y') }}</p>
-                <p class="card-text"><strong>Taille :</strong> {{ diffuseur.taille }} cm</p>
-                <a class="dropdown-item" href="{{ path('app_fiche_diffuseurvoiture', {'id': diffuseur.id}) }}">Fiche Diffuseur Voiture</a>
+            <a href="{{ path('diffuseur_voiture_Fiche', {'id': diffuseur.id }) }}" class="card-link">
+              <div class="card">
+                <div class="card-img-wrapper">
+                    <img class="avatar mx-auto d-block" style="height: auto; width: 300px; display: block;" src="{{ asset('uploads/images/' ~ diffuseur.setImageFilename) }}" alt="{{ diffuseur.nom }}">
+                </div>
+                    <div class="card-body">
+                    <h5 class="card-title">{{ diffuseur.nom }}</h5>
+                    <p class="card-text">{{ diffuseur.description }}</p>
+                    <p class="card-text"><strong>Prix :</strong> {{ diffuseur.prix }} €</p>
+                    </div>
               </div>
-            </div>
+            </a>
           </div>
         {% endfor %}
       </div>
     {% else %}
-      <p>Aucun diffuseur voiture trouvé.</p>
+      <p>Aucun poudre trouvé.</p>
     {% endif %}
   </div>
 {% endblock %}
@@ -39,24 +37,7 @@
     .card {
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .card-img-top {
-      border-radius: 10px 10px 0 0;
-      max-height: 200px;
-      object-fit: cover;
-    }
-    .card-body {
-      text-align: center;
-    }
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    .container {
-      margin-top: 50px;
-    }
-    .text-center {
-      text-align: center;
+      transition: box-shadow 0.3s ease-in-out;
     }
   </style>
 {% endblock %}
