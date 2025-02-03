@@ -41,8 +41,6 @@
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste de Parfum</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ path('poudre') }}">Poudre Parfumée</a>
-                <a class="dropdown-item" href="{{ path('diffuseur_voiture_list') }}">Diffuseur de voiture</a>
-                <a class="dropdown-item" href="#">Suspension parfumée</a>
               </div>
             </li>
             {% if is_granted('ROLE_ADMIN') %}
@@ -51,9 +49,7 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ path('admin_poudre') }}">Gestion des Poudres Parfumées</a>
                 <a class="dropdown-item" href=" {{path('admin_objectdecoration')}} ">Gestion des Objets Décorations</a>
-                <a class="dropdown-item" href="#">Gestion de diffuseur de voiture</a>
-                <a class="dropdown-item" href="#">Gestion de suspension parfumée</a>
-                <a class="dropdown-item" href="{{path ('admin_Bougie')}}">Gestion des Bougies</a>
+                <a class="dropdown-item" href="{{path('admin_Bougie')}}">Gestion des Bougies</a>
               </div>
             </li>
             {% endif %}
