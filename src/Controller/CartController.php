@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Form\CartType;
+use App\Entity\Produit;
 use App\Manager\CartManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Class CartController
@@ -15,26 +17,24 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CartController extends AbstractController
 {
-    /**
-     * @Route("/cart", name="view_cart")
-     */
+    #[Route('/cart', name: 'view_cart', methods: ['GET'])]
     public function index(CartManager $cartManager, Request $request): Response
     {
         $cart = $cartManager->getCurrentCart();
 
-        $form = $this->createForm(CartType::class, $cart);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $cart->setUpdatedAt(new \DateTime());
-            $cartManager->save($cart);
-
-            return $this->redirectToRoute('cart');
-        }
-
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
-            'form' => $form->createView()
         ]);
+    }
+
+    #[Route('/add-to-cart/{id}', name: 'add_to_cart', methods: ['POST'])]
+    public function addToCart(Produit $produit, Request $request, EntityManagerInterface $cartManager): Response
+    {
+        $cart = $cartManager->getCurrentCart();
+        $cartManager->addProductToCart($cart, $produit);
+
+        $this->addFlash('success', 'Le produit a bien été ajouté au panier!');
+
+        return $this->redirectToRoute('view_cart');
     }
 }

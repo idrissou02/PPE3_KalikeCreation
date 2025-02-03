@@ -7,22 +7,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BougieRepository::class)]
-class Bougie
+class Bougie extends Produit
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
     
-    #[ORM\Column(length: 255)]
-    private ?string $nom = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $materiaux = null;
-
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
-    private ?string $prix = null;
-
     #[ORM\Column(length: 255)]
     private ?string $couleur = null;
 
@@ -35,61 +22,6 @@ class Bougie
     #[ORM\Column(length: 255)]
     private ?string $taille = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageFileName = null;
-
-    public function __construct()
-    {
-        $this->updatedAt = new \DateTimeImmutable();
-        $this->setImage("7da2fbda8626e815d79c37dbec8697f4.jpg");
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function nom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setnom(string $nom): static
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getMateriaux(): ?string
-    {
-        return $this->materiaux;
-    }
-
-    public function setMateriaux(string $materiaux): static
-    {
-        $this->materiaux = $materiaux;
-
-        return $this;
-    }
-
-    public function getPrix(): ?string
-    {
-        return $this->prix;
-    }
-
-    public function setPrix(string $prix): static
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
 
     public function getCouleur(): ?string
     {
@@ -139,39 +71,4 @@ class Bougie
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): static
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    public function getImageFileName(): ?string
-    {
-        return $this->imageFileName;
-    }
-
-    public function setImageFileName(?string $imageFileName): static
-    {
-        $this->imageFileName = $imageFileName;
-
-        return $this;
-    }
 }
