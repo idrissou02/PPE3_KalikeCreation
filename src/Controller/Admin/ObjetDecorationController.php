@@ -53,11 +53,9 @@ class ObjetDecorationController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // handle exception if something happens during file upload
                 }
 
-                // updates the 'imageFilename' property to store the image file name
-                // instead of its contents
+                
                 $objectDecoration->setImageFilename($newFilename);
             }
 
