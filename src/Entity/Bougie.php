@@ -22,7 +22,6 @@ class Bougie extends Produit
     #[ORM\Column(length: 255)]
     private ?string $taille = null;
 
-
     public function getCouleur(): ?string
     {
         return $this->couleur;

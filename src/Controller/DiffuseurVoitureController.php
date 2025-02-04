@@ -14,15 +14,15 @@ class DiffuseurVoitureController extends AbstractController
     public function list(DiffuseurVoitureRepository $repo): Response
     {
         $diffuseurs = $repo->findAll();
-        return $this->render('diffuseur_voiture/list.html.twig', [
+        return $this->render('diffuseurvoiture/listeDiffuseurvoiture.html.twig', [
             'diffuseurs' => $diffuseurs
         ]);
     }
 
-    #[Route('/diffuseur-voiture/{id}', name: 'diffuseur_voiture_detail', methods: 'GET')]
+    #[Route('/diffuseur-voiture/{id}', name: 'diffuseur_voiture_Fiche', methods: 'GET')]
     public function detail(DiffuseurVoiture $diffuseur): Response
     {
-        return $this->render('diffuseur_voiture/detail.html.twig', [
+        return $this->render('diffuseurvoiture/ficheDiffuseurvoiture.html.twig', [
             'diffuseur' => $diffuseur
         ]);
     }

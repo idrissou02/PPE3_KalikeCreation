@@ -1,49 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail du Diffuseur de Voiture{% endblock %}
+{% block title %}Liste des Diffuseur de Voiture{% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1 class="text-center mb-5">{{ diffuseurVoiture.nom }}</h1>
+<h1 class="pt-2 text-center">Fiche des Diffuseur de Voiture</h1>
+<div class="container">
+  <!-- Bouton retour à la liste -->
+  <div class="mt-4">
+    <a href="{{ path('diffuseur_voiture_list') }}" class="mb-4 btn btn-secondary">Retour à la liste</a>
+  </div>
 
-    <div class="row">
-      <div class="col-md-6 mb-4">
-        <img src="{{ diffuseurVoiture.image }}" class="img-fluid rounded" alt="Image de {{ diffuseurVoiture.nom }}">
-      </div>
-      <div class="col-md-6 mb-4">
-        <h3>Description</h3>
-        <p>{{ diffuseurVoiture.description }}</p>
-
-        <h4>Prix : {{ diffuseurVoiture.prix }} €</h4>
-        <p><strong>Matériaux :</strong> {{ diffuseurVoiture.materiaux }}</p>
-        <p><strong>Couleur :</strong> {{ diffuseurVoiture.couleur }}</p>
-        <p><strong>Poids :</strong> {{ diffuseurVoiture.poids }} kg</p>
-        <p><strong>Durée de vie :</strong> {{ diffuseurVoiture.duréeDeVie|date('d-m-Y') }}</p>
-        <p><strong>Taille :</strong> {{ diffuseurVoiture.taille }} cm</p>
-
-        <div class="mt-4">
-          <a href="{{ path('app_liste_diffuseurvoiture') }}" class="btn btn-secondary">Retour à la liste</a>
+  <div class="row">
+    <!-- Image du diffuseur -->
+    <div class="col-md-6 mb-4">
+      {% if diffuseur.imageFilename %}
+        <img src="{{ asset('uploads/images/' ~ diffuseur.imageFilename) }}" class="img-fluid rounded" alt="Image de {{ diffuseur.nom }}">
+      {% else %}
+        <p>Pas d'image disponible</p>
+      {% endif %}
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h3><u>{{ diffuseur.nom }}</u></h3>
+        </div>
+        <div class="card-body">
+          <h4>Prix: {{ diffuseur.prix }} €</h4>
+          <h4 class="card-title"><strong>Description</strong></h4>
+          <p class="card-text">{{ diffuseur.description }}</p>
+          <!-- Accordéon pour informations supplémentaires -->
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Informations supplémentaires
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <h6>Matériau: {{ diffuseur.materiaux }}</h6>
+                  <h6>Couleur: {{ diffuseur.couleur }}</h6>
+                  <h6>Durée de vie: {{ diffuseur.dureeDeVie }}h</h6>
+                  <h6>Taille: {{ diffuseur.taille }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+  
 {% endblock %}
 
 {% block stylesheets %}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ1mR7gXQm7g66j6kR3J1ji7b+HkBqAqPTr9W1o8Dk5h7YdBxF1EbwFcbjop" crossorigin="anonymous">
-  <style>
-    .container {
-      margin-top: 50px;
-    }
-    .img-fluid {
-      max-height: 400px;
-      object-fit: cover;
-    }
-    .btn-secondary {
-      margin-top: 20px;
-    }
-    .text-center {
-      text-align: center;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-KyZXEJ1mR7gXQm7g66j6kR3J1ji7b+HkBqAqPTr9W1o8Dk5h7YdBxF1EbwFcbjop" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('public/image/app.css') }}">
 {% endblock %}
