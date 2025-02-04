@@ -12,6 +12,11 @@ class UserFixtures extends Fixture
 {
     private $userPassword;
 
+    public function getGroups(): array
+    {
+        return ['main'];
+    }
+
     public function __construct(UserPasswordHasherInterface $userPasswordHasher) {
         $this->userPassword= $userPasswordHasher;
 

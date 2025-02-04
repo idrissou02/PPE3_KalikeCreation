@@ -27,7 +27,7 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $materiaux = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageFileName = null;
 
     public function getId(): ?int
