@@ -9,14 +9,27 @@ class CartItem
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Cart::class, inversedBy: 'items')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Cart $cart = null;
 
-    #[ORM\ManyToOne(targetEntity: Produit::class)]
-    private ?Produit $produit = null;
+    #[ORM\ManyToOne(targetEntity: Bougie::class, inversedBy: 'cartItems')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Bougie $bougie = null;
+
+    #[ORM\ManyToOne(targetEntity: ObjetDecoration::class, inversedBy: 'cartItems')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?ObjetDecoration $objectDecoration = null;
+
+    #[ORM\ManyToOne(targetEntity: Poudre::class, inversedBy: 'cartItems')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Poudre $poudre = null;
+
+    #[ORM\Column(type: "integer")]
+    private int $quantity = 1;
 
     public function getId(): ?int
     {
@@ -34,14 +47,57 @@ class CartItem
         return $this;
     }
 
-    public function getProduit(): ?Produit
+    public function getBougie(): ?Bougie
     {
-        return $this->produit;
+        return $this->bougie;
     }
 
-    public function setProduit(?Produit $produit): self
+    public function setBougie(?Bougie $bougie): self
     {
-        $this->produit = $produit;
+        $this->bougie = $bougie;
         return $this;
     }
+
+    public function getObjectDecoration(): ?ObjetDecoration
+    {
+        return $this->objectDecoration;
+    }
+
+    public function setObjectDecoration(?ObjetDecoration $objectDecoration): self
+    {
+        $this->objectDecoration = $objectDecoration;
+        return $this;
+    }
+
+    public function getPoudre(): ?Poudre
+    {
+        return $this->poudre;
+    }
+
+    public function setPoudre(?Poudre $poudre): self
+    {
+        $this->poudre = $poudre;
+        return $this;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
+        return $this;
+    }
+
+    public function incrementQuantity(): self
+    {
+        $this->quantity++;
+        return $this;
+    }
+
 }
+
+
+    

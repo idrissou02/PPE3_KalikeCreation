@@ -25,7 +25,7 @@ class CartController extends AbstractController
     {
         $cart = $cartManager->getCurrentCart();
 
-        return $this->render('cart/index.html.twig', [
+        return $this->render('cart/cart.html.twig', [
             'cart' => $cart,
         ]);
     }
@@ -52,14 +52,14 @@ class CartController extends AbstractController
 
         $this->addFlash('success', 'Le produit a bien été ajouté au panier!');
 
-        return $this->redirectToRoute('view_cart');
+        return $this->redirect($request->headers->get('referer'));
     }
 
     private function getEntityClass(string $type): ?string
     {
         return match ($type) {
             'bougie' => Bougie::class,
-            'object_decoration' => ObjetDecoration::class,
+            'objet_decoration' => ObjetDecoration::class,
             'poudre' => Poudre::class,
             default => null,
         };

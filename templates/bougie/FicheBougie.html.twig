@@ -41,7 +41,7 @@
               </div>
             </div>
             <!-- Button to add to cart -->
-            <form action="{{path('add_to_cart',{'id' : LaBougie.id})}}" method="post">
+            <form action="{{path('add_to_cart',{'type': 'bougie', 'id' : LaBougie.id})}}" method="post">
               <button type="submit" class="btn btn-outline-success mt-4">Ajouter au panier</button>
             </form>
           </div>
