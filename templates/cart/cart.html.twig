@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="text-center mb-5">Mon Panier</h1>
+    <h1 class="text-center mt-4 mb-5">Mon Panier</h1>
 
     {% set total = 0 %}
     {% if cart.items is not empty %}
@@ -56,21 +56,27 @@
                 </div>  
             {% endfor %}
         </div>
-<h1>
-</h1>
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <h4>Total: {{ total }} €</h4>
-            </div>
-        </div>
-    {% else %}
-        <p>Votre panier est vide.</p>
-    {% endif %}
+<div class="d-flex justify-content-center my-4">
+    <form action="{{ path('pay_cart') }}" method="post">
+        <button type="submit" class="btn fa-solid fa-cart-shopping btn-outline-success mt-2">   Payer </button>
+    </form>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4>Total: {{ total }} €</h4>
+    </div>
+</div>
+{% else %}
+    <p>Votre panier est vide.</p>
+{% endif %}
 
-    <style>
-    .jolie{
-        font-family: 'Lobster', cursive;
-    }
+<style>
+.jolie {
+    font-family: 'Lobster', cursive;
+    text-align: center;
+}
+</style>
+
     </style>
 </div>
 {% endblock %}

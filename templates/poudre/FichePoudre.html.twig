@@ -24,11 +24,12 @@
             <p class="card-text"><strong>Couleur :</strong> {{ LaPoudre.dureedevie }}</p>
             <p class="card-text"><strong>Description :</strong> {{ LaPoudre.description }}</p>
           </div>
-        </div>
-      </div>
-      <form action="{{path('add_to_cart',{'type': 'poudre', 'id' : LaPoudre.id})}}" method="post">
+          <form action="{{path('add_to_cart',{'type': 'poudre', 'id' : LaPoudre.id})}}" method="post">
               <button type="submit" class="btn btn-outline-success mt-4">Ajouter au panier</button>
       </form>
+        </div>
+      </div>
+      
     </div>
   {% else %}
     <div class="alert alert-danger" role="alert">

@@ -70,6 +70,20 @@ class CartManager
         $this->entityManager->flush();
     }
 
+    public function payCart(Cart $cart): void
+    {
+        // Mark the cart as paid
+        $cart->setPaid(true);
+        $this->entityManager->flush();
+
+        // Clear the cart items
+        foreach ($cart->getItems() as $item) {
+            $this->entityManager->remove($item);
+        }
+        $cart->getItems()->clear();
+        $this->entityManager->flush();
+    }
+
     private function findCartItem(Cart $cart, $produit): ?CartItem
     {
         foreach ($cart->getItems() as $item) {

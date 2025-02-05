@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Bougie;
 use App\Entity\Poudre;
-use App\Form\CartType;
-use App\Entity\Produit;
 use App\Entity\CartItem;
 use App\Manager\CartManager;
 use App\Entity\ObjetDecoration;
@@ -73,6 +71,18 @@ class CartController extends AbstractController
         return $this->redirectToRoute('view_cart');
     }
 
+    #[Route('/cart/pay', name: 'pay_cart', methods: ['GET', 'POST'])]  
+    public function pay(CartManager $cartManager)
+    {
+        $cart = $cartManager->getCurrentCart();
+        $cartManager->payCart($cart);
+
+        $this->addFlash('info', 'Le paiement a été effectué avec succès !');
+
+        return $this->redirectToRoute('accueil');
+        
+    }     
+    
 
 
     private function getEntityClass(string $type): ?string
