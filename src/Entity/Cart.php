@@ -35,7 +35,7 @@ class Cart
     public function addItem(Produit $produit): self
     {
         $item = new CartItem();
-        $item->setProduit($produit);
+        $item->setBougie($produit);
         $item->setCart($this);
         $this->items->add($item);
 

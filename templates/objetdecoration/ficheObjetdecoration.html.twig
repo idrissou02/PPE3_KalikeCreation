@@ -26,6 +26,9 @@
           </div>
         </div>
       </div>
+       <form action="{{path('add_to_cart',{'type': 'objet_decoration', 'id' : objetDeco.id})}}" method="post">
+              <button type="submit" class="btn btn-outline-success mt-4">Ajouter au panier</button>
+      </form>
     </div>
   {% else %}
     <div class="alert alert-danger" role="alert">

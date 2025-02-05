@@ -6,6 +6,7 @@ use App\Entity\Bougie;
 use App\Entity\Poudre;
 use App\Form\CartType;
 use App\Entity\Produit;
+use App\Entity\CartItem;
 use App\Manager\CartManager;
 use App\Entity\ObjetDecoration;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,7 +26,7 @@ class CartController extends AbstractController
     {
         $cart = $cartManager->getCurrentCart();
 
-        return $this->render('cart/index.html.twig', [
+        return $this->render('cart/cart.html.twig', [
             'cart' => $cart,
         ]);
     }
@@ -52,14 +53,33 @@ class CartController extends AbstractController
 
         $this->addFlash('success', 'Le produit a bien été ajouté au panier!');
 
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    #[Route('/remove-from-cart/{id}', name: 'remove_from_cart', methods: ['POST'])]
+    public function removeFromCart(int $id, CartManager $cartManager, EntityManagerInterface $entityManager): Response
+    {
+        $cart = $cartManager->getCurrentCart();
+        $cartItem = $entityManager->getRepository(CartItem::class)->find($id);
+
+        if (!$cartItem) {
+            throw $this->createNotFoundException('Cart item not found');
+        }
+
+        $cartManager->removeProductFromCart($cart, $cartItem);
+
+        $this->addFlash('success', 'Le produit a bien été supprimé du panier!');
+
         return $this->redirectToRoute('view_cart');
     }
+
+
 
     private function getEntityClass(string $type): ?string
     {
         return match ($type) {
             'bougie' => Bougie::class,
-            'object_decoration' => ObjetDecoration::class,
+            'objet_decoration' => ObjetDecoration::class,
             'poudre' => Poudre::class,
             default => null,
         };
