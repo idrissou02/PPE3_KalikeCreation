@@ -63,6 +63,13 @@ class CartManager
         $this->entityManager->flush();
     }
 
+    public function removeProductFromCart(Cart $cart, CartItem $cartItem): void
+    {
+        $cart->getItems()->removeElement($cartItem);
+        $this->entityManager->remove($cartItem);
+        $this->entityManager->flush();
+    }
+
     private function findCartItem(Cart $cart, $produit): ?CartItem
     {
         foreach ($cart->getItems() as $item) {
