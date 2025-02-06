@@ -7,6 +7,7 @@ use App\Entity\CartItem;
 use App\Entity\Bougie;
 use App\Entity\ObjetDecoration;
 use App\Entity\Poudre;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -71,18 +72,18 @@ class CartManager
         $this->entityManager->flush();
     }
 
-    public function payCart(Cart $cart): void
+    public function payCart(Cart $cart, User $user): void
     {
-        // Mark the cart as paid
+        // Mark the current cart as paid and set the user
         $cart->setPaid(true);
+        $cart->setUser($user);
         $this->entityManager->flush();
 
-        // Clear the cart items
-        foreach ($cart->getItems() as $item) {
-            $this->entityManager->remove($item);
-        }
-        $cart->getItems()->clear();
+        // Create a new cart and set it as the current cart
+        $newCart = new Cart();
+        $this->entityManager->persist($newCart);
         $this->entityManager->flush();
+        $this->session->set('cart_id', $newCart->getId());
     }
 
     private function findCartItem(Cart $cart, $produit): ?CartItem

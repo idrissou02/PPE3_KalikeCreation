@@ -18,10 +18,10 @@ class Produit
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
@@ -62,7 +62,7 @@ class Produit
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
         return $this;
@@ -84,10 +84,9 @@ class Produit
         return $this->materiaux;
     }
 
-    public function setMateriaux(string $materiaux): static
+    public function setMateriaux(string $materiaux): self
     {
         $this->materiaux = $materiaux;
-
         return $this;
     }
 
@@ -96,10 +95,9 @@ class Produit
         return $this->imageFileName;
     }
 
-    public function setImageFileName(string $imageFileName): static
+    public function setImageFileName(?string $imageFileName): self
     {
         $this->imageFileName = $imageFileName;
-
         return $this;
     }
 }

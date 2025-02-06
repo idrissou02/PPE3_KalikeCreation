@@ -78,15 +78,13 @@ class CartController extends AbstractController
     public function pay(CartManager $cartManager)
     {
         $cart = $cartManager->getCurrentCart();
-        $cartManager->payCart($cart);
+        $user = $this->getUser(); // Get the current logged-in user
+        $cartManager->payCart($cart, $user);
 
         $this->addFlash('info', 'Le paiement a été effectué avec succès !');
 
         return $this->redirectToRoute('accueil');
-        
     }     
-    
-
 
     private function getEntityClass(string $type): ?string
     {
