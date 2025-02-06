@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fiche de la Bougie{% endblock %}
+{% block title %}Fiche Bougie{% endblock %}
 
 {% block body %}
 <h1 class="pt-2 text-center">Fiche de la Bougie</h1>
@@ -40,10 +40,15 @@
                 </div>
               </div>
             </div>
-            <!-- Button to add to cart -->
-            <form action="{{path('add_to_cart',{'type': 'bougie', 'id' : LaBougie.id})}}" method="post">
+            <!-- Form to add to cart with quantity -->
+            <form action="{{ path('add_to_cart', {'type': 'bougie', 'id': LaBougie.id}) }}" method="post">
+              <div class="form-group">
+                <label for="quantity">Quantité :</label>
+                <input type="number" id="quantity" name="quantity" class="form-control" value="1" min="1">
+              </div>
               <button type="submit" class="btn btn-outline-success mt-4">Ajouter au panier</button>
             </form>
+            
           </div>
         </div>
       </div>

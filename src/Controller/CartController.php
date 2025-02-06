@@ -46,8 +46,11 @@ class CartController extends AbstractController
             throw $this->createNotFoundException('Product not found');
         }
 
+        // Get the quantity from the request
+        $quantity = $request->request->getInt('quantity', 1);
+
         $cart = $cartManager->getCurrentCart();
-        $cartManager->addProductToCart($cart, $produit);
+        $cartManager->addProductToCart($cart, $produit, $quantity);
 
         $this->addFlash('success', 'Le produit a bien été ajouté au panier!');
 

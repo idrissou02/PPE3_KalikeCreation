@@ -58,10 +58,10 @@
             {% endif %}
           </ul>
           {% if app.user %}
-                      <li class="nav-item ">
+                      <li class="nav-item list-unstyled">
                         <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}"> </img>
                       </li>
-                        <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">{{ app.user.nom }}</a>
+                        <a class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">{{ app.user.nom }}</a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="{{path('view_cart')}}">Mon Panier</a>                                                                                                                                                                                                                                     
                             <div class="dropdown-divider"></div>
