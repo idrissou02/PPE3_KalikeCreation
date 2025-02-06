@@ -39,15 +39,16 @@ class CartManager
         return $cart;
     }
 
-    public function addProductToCart(Cart $cart, $produit): void
+    public function addProductToCart(Cart $cart, $produit, int $quantity): void
     {
         $cartItem = $this->findCartItem($cart, $produit);
 
         if ($cartItem) {
-            $cartItem->incrementQuantity();
+            $cartItem->setQuantity($cartItem->getQuantity() + $quantity);
         } else {
             $cartItem = new CartItem();
             $cartItem->setCart($cart);
+            $cartItem->setQuantity($quantity);
 
             if ($produit instanceof Bougie) {
                 $cartItem->setBougie($produit);
