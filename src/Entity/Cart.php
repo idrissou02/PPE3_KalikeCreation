@@ -20,6 +20,10 @@ class Cart
     #[ORM\Column(type: "boolean")]
     private bool $paid = false;
 
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
@@ -65,6 +69,17 @@ class Cart
     public function setPaid(bool $paid): self
     {
         $this->paid = $paid;
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
         return $this;
     }
 }

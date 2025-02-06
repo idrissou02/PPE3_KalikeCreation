@@ -28,7 +28,7 @@ class CartItem
     #[ORM\JoinColumn(nullable: true)]
     private ?Poudre $poudre = null;
 
-    #[ORM\Column(type: "integer")]
+    #[ORM\Column(type: "integer", options: ["unsigned" => true, "default" => 1])]
     private int $quantity = 1;
 
     public function getId(): ?int

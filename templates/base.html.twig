@@ -55,6 +55,9 @@
                 <a class="dropdown-item" href="{{path('admin_Bougie')}}">Gestion des Bougies</a>
               </div>
             </li>
+            <button type="button" class="btn btn-outline-info">
+              <a href="{{ path('orders') }}">Gestion des Commandes</a>
+            </button>
             {% endif %}
           </ul>
           {% if app.user %}
