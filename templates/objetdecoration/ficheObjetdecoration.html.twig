@@ -24,9 +24,18 @@
             <p class="card-text"><strong>Couleur :</strong> {{ objetDeco.couleur }}</p>
             <p class="card-text"><strong>Description :</strong> {{ objetDeco.description }}</p>
           </div>
-          <form action="{{path('add_to_cart',{'type': 'objet_decoration', 'id' : objetDeco.id})}}" method="post">
+          <form id="add-to-cart-form" action="{{ path('add_to_cart', {'type': 'objet_decoration', 'id': objetDeco.id}) }}" method="post">
+              <div class="form-group">
+                <label for="quantity">Quantité :</label>
+                <div class="input-group quantity-input">
+                  <input type="number" id="quantity" name="quantity" class="form-control" value="1" min="1" required>
+                </div>
+                <div class="invalid-feedback">
+                  Veuillez entrer une quantité valide.
+                </div>
+              </div>
               <button type="submit" class="btn btn-outline-success mt-4">Ajouter au panier</button>
-      </form>
+            </form>
         </div>
       </div>
        
