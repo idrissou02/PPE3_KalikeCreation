@@ -6,15 +6,22 @@ use App\Repository\FondantRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FondantRepository::class)]
-class Fondant
+class Fondant extends Produit
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+   
+   
+    #[ORM\Column(length: 255)]
+    private ?string $ddv = null;
 
-    public function getId(): ?int
+    public function getDdv(): ?string
     {
-        return $this->id;
+        return $this->ddv;
+    }
+
+    public function setDdv(string $ddv): static
+    {
+        $this->ddv = $ddv;
+
+        return $this;
     }
 }

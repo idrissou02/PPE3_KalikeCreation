@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Fondant;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use App\Model\FiltreFondant;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Fondant>
@@ -21,28 +23,35 @@ class FondantRepository extends ServiceEntityRepository
         parent::__construct($registry, Fondant::class);
     }
 
-//    /**
-//     * @return Fondant[] Returns an array of Fondant objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+    * @return Fondant[] Returns an array of Fondant objects
+    */
+    public function ListeFondants(FiltreFondant $filtre=null): array
+    {
+        $query = $this->createQueryBuilder('f')
+        ->select('f')
+        ->orderBy('f.nom', 'ASC');
+        if(!empty($filtre->nom))
+        {
+            $query->andWhere('f.nom LIKE :filtre')
+            ->setParameter('filtre', "%$filtre->nom%");
+        }
+        
+        return $query->getQuery()->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Fondant
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * Find fondants by name using a LIKE query.
+     *
+     * @param string $searchTerm
+     * @return Fondant[]
+     */
+    public function findByNom(string $searchTerm) :array
+   {
+        return $this->createQueryBuilder('f')
+        ->where('f.nom LIKE :searchTerm')
+        ->setParameter('searchTerm', '%' . $searchTerm . '%')
+        ->getQuery()
+        ->getResult();
+   }
 }
