@@ -39,7 +39,7 @@
     color: #fff;
     background-color:rgb(133, 107, 31);
     border-color:rgb(126, 115, 83);
-  }
+}
 
 
 .card-bougie {
@@ -52,4 +52,8 @@
 
 .card-poudre {
     background-color: lightgreen;
+}
+
+.card-fondant {
+        background-color: lightcoral;
 }
