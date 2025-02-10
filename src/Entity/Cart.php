@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -19,6 +18,9 @@ class Cart
 
     #[ORM\Column(type: "boolean")]
     private bool $paid = false;
+
+    #[ORM\Column(type: "boolean")]
+    private bool $validated = false;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: true)]
@@ -69,6 +71,17 @@ class Cart
     public function setPaid(bool $paid): self
     {
         $this->paid = $paid;
+        return $this;
+    }
+
+    public function isValidated(): bool
+    {
+        return $this->validated;
+    }
+
+    public function setValidated(bool $validated): self
+    {
+        $this->validated = $validated;
         return $this;
     }
 

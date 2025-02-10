@@ -11,7 +11,7 @@
     {% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-dark pt-4" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Kaline Creation</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,34 +55,35 @@
                 <a class="dropdown-item" href="{{path('admin_Bougie')}}">Gestion des Bougies</a>
               </div>
             </li>
-            <button type="button" class="btn btn-outline-info">
-              <a href="{{ path('orders') }}">Gestion des Commandes</a>
-            </button>
+            <a  class="btn btn-outline-info " href="{{ path('orders') }} "> Commandes</a>
+            {% endif %}
+            {% if is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+              <a  class="btn btn-outline-info " href="{{ path('orders_client') }} "> Mes Commandes</a>
             {% endif %}
           </ul>
           {% if app.user %}
-                      <li class="nav-item list-unstyled">
-                        <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}"> </img>
-                      </li>
-                        <a class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">{{ app.user.nom }}</a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="{{path('view_cart')}}">Mon Panier</a>                                                                                                                                                                                                                                     
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
-                        </div>
-                      </li>
-              {% else %}
-                <a href="{{path('app_login')}}">
-                  <button type="button" class="btn connexion btn-outline-success">
-                    Se connecter
-                  </button>
-                </a>
-                <a href="{{path('app_register')}}">
-                  <button type="button" class="btn connexion btn-outline-primary">
-                    S'inscrire
-                  </button>
-                </a>
-            </ul>
+            <li class="nav-item list-unstyled">
+              <img class="connexion supermini" src="{{ app.user.avatar }}" alt="photo de {{app.user.nom}}"> </img>
+            </li>
+            <a class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">{{ app.user.nom }}</a>
+            <div class="dropdown-menu dropdown-menu-end">
+              <a class="dropdown-item" href="{{path('view_cart')}}">Mon Panier</a>                                                                                                                                                                                                                                     
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+          </li>
+          {% else %}
+            <a href="{{path('app_login')}}">
+              <button type="button" class="btn connexion btn-outline-success">
+                Se connecter
+              </button>
+            </a>
+            <a href="{{path('app_register')}}">
+              <button type="button" class="btn connexion btn-outline-primary">
+                S'inscrire
+              </button>
+            </a>
+          </ul>
           {% endif %}
         </div>
       </div>
@@ -109,12 +110,12 @@
       <footer class="text-center text-lg-start" style="background-color: pink;">
         <div class="container d-flex justify-content-center py-5">
           <a href="https://www.tiktok.com/@kalinecreation.com">
-            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
+            <button type="button" class="btn btn-outline-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
               <i class="fab fa-tiktok"></i>
             </button>
           </a>
           <a href="https://www.instagram.com/kaline_creation78/">
-            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
+            <button type="button" class="btn btn-outline-primary btn-lg btn-floating mx-2" style="background-color: #d7aaf0;">
               <i class="fab fa-instagram"></i>
             </button>
           </a>
