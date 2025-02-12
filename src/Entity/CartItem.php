@@ -28,6 +28,10 @@ class CartItem
     #[ORM\JoinColumn(nullable: true)]
     private ?Poudre $poudre = null;
 
+    #[ORM\ManyToOne(targetEntity: Fondant::class, inversedBy: 'cartItems')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Fondant $fondant = null;
+
     #[ORM\Column(type: "integer", options: ["unsigned" => true, "default" => 1])]
     private int $quantity = 1;
 
@@ -80,6 +84,17 @@ class CartItem
         return $this;
     }
 
+    public function getFondant(): ?Fondant
+    {
+        return $this->fondant;
+    }
+
+    public function setFondant(?Fondant $fondant): self
+    {
+        $this->fondant = $fondant;
+        return $this;
+    }
+
     public function getQuantity(): int
     {
         return $this->quantity;
@@ -96,7 +111,6 @@ class CartItem
         $this->quantity++;
         return $this;
     }
-
 }
 
 

@@ -5,7 +5,7 @@ namespace App\Model;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
-class FiltreBougie {
+class FiltreFondant {
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

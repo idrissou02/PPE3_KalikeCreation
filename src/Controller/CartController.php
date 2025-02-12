@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Bougie;
 use App\Entity\Poudre;
 use App\Entity\CartItem;
+use App\Entity\Fondant;
 use App\Manager\CartManager;
 use App\Entity\ObjetDecoration;
 use Doctrine\ORM\EntityManagerInterface;
@@ -92,6 +93,7 @@ class CartController extends AbstractController
             'bougie' => Bougie::class,
             'objet_decoration' => ObjetDecoration::class,
             'poudre' => Poudre::class,
+            'fondant' => Fondant::class,
             default => null,
         };
     }

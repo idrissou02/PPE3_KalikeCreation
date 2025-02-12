@@ -23,6 +23,8 @@
                                 {% set cardClass = 'card-object-decoration' %}
                             {% elseif item.poudre %}
                                 {% set cardClass = 'card-poudre' %}
+                            {% elseif item.fondant %}
+                                {% set cardClass = 'card-fondant' %}
                             {% endif %}
                             <div class="col-md-4 mb-4 d-flex align-items-stretch">
                                 <div class="card h-100 {{ cardClass }}">
@@ -35,6 +37,9 @@
                                             <p class="card-text"><strong>Quantité :</strong> {{ item.quantity }}</p>
                                         {% elseif item.poudre %}
                                             <h5 class="card-title">{{ item.poudre.nom }}</h5>
+                                            <p class="card-text"><strong>Quantité :</strong> {{ item.quantity }}</p>
+                                        {% elseif item.fondant %}
+                                            <h5 class="card-title">{{ item.fondant.nom }}</h5>
                                             <p class="card-text"><strong>Quantité :</strong> {{ item.quantity }}</p>
                                         {% endif %}
                                     </div>

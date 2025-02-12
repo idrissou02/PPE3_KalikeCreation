@@ -44,6 +44,7 @@
 
 .card-bougie {
     background-color: pink;
+    color :rgb(28, 43, 128)
 }
 
 .card-object-decoration {
@@ -55,5 +56,7 @@
 }
 
 .card-fondant {
-        background-color: lightcoral;
+        background-color: rgb(33, 23, 173);
+        color: white;
+        
 }
