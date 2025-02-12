@@ -21,7 +21,6 @@
             <h5 class="card-title">{{ Fondant.nom }}</h5>
             <p class="card-text mt-4"><strong>Prix :</strong> {{ Fondant.prix }} €</p>
             <p class="card-text"><strong>Matériaux :</strong> {{ Fondant.materiaux }}</p>
-            <p class="card-text"><strong>Couleur :</strong> {{ Fondant.couleur }}</p>
             <p class="card-text"><strong>Description :</strong> {{ Fondant.description }}</p>
           </div>
           <form id="add-to-cart-form" action="{{ path('add_to_cart', {'type': 'fondant', 'id': Fondant.id}) }}" method="post">

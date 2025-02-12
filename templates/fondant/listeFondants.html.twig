@@ -23,7 +23,7 @@
       <div class="row">
         {% for LeFondant in LesFondants %}
           <div class="col-md-4 mb-4 d-flex align-items-stretch">
-            <a href="{{ path('FichePoudre', {'id': LeFondant.id }) }}" class="card-link w-100">
+            <a href="{{ path('ficheFondant', {'id': LeFondant.id }) }}" class="card-link w-100">
               <div class="card h-100">
                 <div class="card-img-wrapper">
                   <img class="card-img-top" src="{{ asset('uploads/images/' ~ LeFondant.imageFileName|replace({'http://': '', 'https://': ''})) }}" alt="Card image">

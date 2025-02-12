@@ -44,23 +44,9 @@ class FondantController extends AbstractController
     #[Route('/Fondant/{id}', name: 'ficheFondant', methods: 'GET')]
     public function FicheFondant(Fondant $Fondant): Response    
     {
-        return $this->render('Fondant/FicheFondant.html.twig', [
-            'LaFondant' => $Fondant
+        return $this->render('Fondant/ficheFondant.html.twig', [
+            'Fondant' => $Fondant
             
         ]);
-    }
-
-    #[Route('/Fondant/{id}/add-to-cart', name: 'add_to_cart', methods: ['POST'])]
-    public function addToCart(Fondant $Fondant, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        // Logic to add the Fondant to the cart
-        // For example, you can use a session to store the cart items
-        $cart = $request->getSession()->get('cart', []);
-        $cart[] = $Fondant->getId();
-        $request->getSession()->set('cart', $cart);
-
-        $this->addFlash('success', 'la Fondant a bien été ajouté au panier!');
-
-        return $this->redirectToRoute('ficheFondant', ['id' => $Fondant->getId()]);
     }
 }

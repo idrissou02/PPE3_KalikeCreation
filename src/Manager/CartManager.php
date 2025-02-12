@@ -7,6 +7,7 @@ use App\Entity\CartItem;
 use App\Entity\Bougie;
 use App\Entity\ObjetDecoration;
 use App\Entity\Poudre;
+use App\Entity\Fondant;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -57,6 +58,8 @@ class CartManager
                 $cartItem->setObjectDecoration($produit);
             } elseif ($produit instanceof Poudre) {
                 $cartItem->setPoudre($produit);
+            } elseif ($produit instanceof Fondant) {
+                $cartItem->setFondant($produit);
             }
 
             $this->entityManager->persist($cartItem);
@@ -74,6 +77,7 @@ class CartManager
 
     public function payCart(Cart $cart, User $user): void
     {
+        
         // Mark the current cart as paid and set the user
         $cart->setPaid(true);
         $cart->setUser($user);
@@ -96,6 +100,9 @@ class CartManager
                 return $item;
             }
             if ($produit instanceof Poudre && $item->getPoudre() === $produit) {
+                return $item;
+            }
+            if ($produit instanceof Fondant && $item->getFondant() === $produit) {
                 return $item;
             }
         }

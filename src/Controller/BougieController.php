@@ -50,17 +50,17 @@ class BougieController extends AbstractController
         ]);
     }
 
-    #[Route('/bougie/{id}/add-to-cart', name: 'add_to_cart', methods: ['POST'])]
-    public function addToCart(Bougie $bougie, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        // Logic to add the bougie to the cart
-        // For example, you can use a session to store the cart items
-        $cart = $request->getSession()->get('cart', []);
-        $cart[] = $bougie->getId();
-        $request->getSession()->set('cart', $cart);
+    // #[Route('/bougie/{id}/add-to-cart', name: 'add_to_cart', methods: ['POST'])]
+    // public function addToCart(Bougie $bougie, Request $request, EntityManagerInterface $entityManager): Response
+    // {
+    //     // Logic to add the bougie to the cart
+    //     // For example, you can use a session to store the cart items
+    //     $cart = $request->getSession()->get('cart', []);
+    //     $cart[] = $bougie->getId();
+    //     $request->getSession()->set('cart', $cart);
 
-        $this->addFlash('success', 'la bougie a bien été ajouté au panier!');
+    //     $this->addFlash('success', 'la bougie a bien été ajouté au panier!');
 
-        return $this->redirectToRoute('ficheBougie', ['id' => $bougie->getId()]);
-    }
+    //     return $this->redirectToRoute('ficheBougie', ['id' => $bougie->getId()]);
+    // }
 }

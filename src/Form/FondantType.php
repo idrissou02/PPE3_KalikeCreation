@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\FloatType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class FondantType extends AbstractType
@@ -27,7 +27,7 @@ class FondantType extends AbstractType
                     "placeholder"=>"saisier le nom du fondant"
                 ]
             ])
-            ->add('prix', FloatType::class,[
+            ->add('prix', NumberType::class,[
                 'attr'=>[
                     "placeholder"=>"saisier le prix"
                 ]
